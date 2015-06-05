@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="60dp"
+    android:layout_height="50dp"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/sticky_row_index"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+
+        android:text="ME"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="#8a8a8a"/>
+</LinearLayout>
