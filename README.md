@@ -9,6 +9,7 @@ This repository contains the source code for a component that implements the " S
 * [How to use](#how-to-use)
 * [TODO List](#to-do)
 * [Team Members](#team-members)
+* [License](#license)
 
 
 # <a name="intro"></a>Introduction
@@ -37,7 +38,7 @@ dependencies {
 
 Then, add this component to your XML layout (usualy, right after the RecyclerView):
 
-```
+```xml
 <br.com.stickyindex.StickyIndex
         android:id="@+id/sticky_index_container"
         android:layout_width="wrap_content"
@@ -46,7 +47,7 @@ Then, add this component to your XML layout (usualy, right after the RecyclerVie
 
 By last, initialize it in the container main class. Also add the dataSet (a char array that will contain the indexes). This array must have the same size as the main list, with each row corresponding to the element that it will be associated). Finally, set the corresponding RecyclerVIew that will control the scroll movement:
 
-```
+```java
 // Creates index viewer
         StickyIndex indexContainer = (StickyIndex) this.findViewById(R.id.sticky_index_container);
         // INSERT CHAR LIST
@@ -64,3 +65,18 @@ By last, initialize it in the container main class. Also add the dataSet (a char
 
 # <a name="team-members"></a>Team Members
 * "Fernandes S. Edgar" <fernandes.s.edgar@gmail.com>
+
+# <a name="license"></a>License
+Copyright 2015 Edgar da Silva Fernandes
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
