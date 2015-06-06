@@ -1,6 +1,8 @@
 #Sticky Index Library
 This repository contains the source code for a component that implements the " Sticky Letter Index" such as it is presented in the Android Contact App from Android Lollipop (API 21) on. Please feel free to use it as well as enhance it
 
+**Dont't forget to read the P.S. at the [how to use](#how-to-use) section**
+
 # Table of Contents
 * [Introduction](#intro)
 * [Showcase](#showcase)
@@ -18,7 +20,22 @@ Check below the library in a Contact app context:
 ![Demo](https://github.com/edsilfer/sticky-index/blob/master/app/demo/sticky_index_demo.gif)
 
 # <a name="how-to-use"></a>How to use
-First of all, add the following component to your XML layout:
+First of all, add the following dependencies to your build.gradle:
+
+```
+repositories {
+    maven {
+        url "https://jitpack.io"
+    }
+}
+
+dependencies {
+    compile 'com.github.edsilfer:sticky-index:1.0.0'
+}
+
+```
+
+Then, add this component to your XML layout (usualy, right after the RecyclerView):
 
 ```
 <br.com.stickyindex.StickyIndex
@@ -27,7 +44,7 @@ First of all, add the following component to your XML layout:
         android:layout_height="match_parent" />
 ```
 
-And then, initialize it in the container main class. Also add the dataSet (a char array that will contain the indexes). This array must have the same size as the main list, with each row corresponding to the element that it will be associated). By last, set the corresponding RecyclerVIew that will control the scroll movement:
+By last, initialize it in the container main class. Also add the dataSet (a char array that will contain the indexes). This array must have the same size as the main list, with each row corresponding to the element that it will be associated). Finally, set the corresponding RecyclerVIew that will control the scroll movement:
 
 ```
 // Creates index viewer
