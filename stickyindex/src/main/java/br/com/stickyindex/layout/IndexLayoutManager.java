@@ -11,13 +11,13 @@ import br.com.stickyindex.model.Subscriber;
 /**
  * Created by edgar on 5/31/15.
  */
-public class StickyIndex implements Subscriber {
+public class IndexLayoutManager implements Subscriber {
 
     private TextView stickyIndex;
     private RecyclerView recyclerView;
 
     // CONSTRUCTOR _________________________________________________________________________________
-    public StickyIndex(RelativeLayout rl) {
+    public IndexLayoutManager(RelativeLayout rl) {
         this.stickyIndex = (TextView) rl.findViewById(R.id.sticky_index);
     }
 

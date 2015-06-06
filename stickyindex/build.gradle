@@ -1,5 +1,29 @@
 apply plugin: 'com.android.library'
 
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'sticky-index'
+
+    publishedGroupId = 'br.com.stickyindex'
+    libraryName = 'IndexLayoutManager'
+    artifact = 'sticky-index'
+
+    libraryDescription = 'A component that implements the " Sticky Letter Index" such as it is presented in the Android Contact App from Android Lollipop (API 21) on.'
+
+    siteUrl = 'https://github.com/edsilfer/sticky-index'
+    gitUrl = 'https://github.com/edsilfer/sticky-index.git'
+
+    libraryVersion = '0.0.1'
+
+    developerId = 'edsilfer'
+    developerName = 'Edgar Fernandes'
+    developerEmail = 'fernandes.s.edgar@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
 android {
     compileSdkVersion 22
     buildToolsVersion "22.0.1"
@@ -10,6 +34,7 @@ android {
         versionCode 1
         versionName "1.0"
     }
+
     buildTypes {
         release {
             minifyEnabled false

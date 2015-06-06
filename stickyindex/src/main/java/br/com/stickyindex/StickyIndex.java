@@ -11,37 +11,37 @@ import android.widget.AbsListView;
 import android.widget.RelativeLayout;
 
 import br.com.stickyindex.adapter.IndexAdapter;
-import br.com.stickyindex.layout.StickyIndex;
+import br.com.stickyindex.layout.IndexLayoutManager;
 import br.com.stickyindex.listener.IndexScrollListener;
 
 
 /**
  * Created by edgar on 6/4/15.
  */
-public class Main extends RelativeLayout {
+public class StickyIndex extends RelativeLayout {
     private RecyclerView referenceList;
     private RecyclerView indexList;
 
     private IndexAdapter adapter;
-    private StickyIndex stickyIndex;
+    private IndexLayoutManager stickyIndex;
 
     // Constructors ________________________________________________________________________________
-    public Main(Context context) {
+    public StickyIndex(Context context) {
         super(context);
         initialize(context);
     }
 
-    public Main(Context context, AttributeSet attrs) {
+    public StickyIndex(Context context, AttributeSet attrs) {
         super(context, attrs);
         initialize (context);
     }
 
-    public Main(Context context, AttributeSet attrs, int defStyleAttr) {
+    public StickyIndex(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initialize (context);
     }
 
-    public Main(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public StickyIndex(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         initialize (context);
     }
@@ -68,7 +68,7 @@ public class Main extends RelativeLayout {
         scrollListener.setRecyRecyclerView(indexList);
         indexList.setOnScrollListener(scrollListener);
 
-        this.stickyIndex = new StickyIndex(this);
+        this.stickyIndex = new IndexLayoutManager(this);
         this.stickyIndex.setRecyclerView(indexList);
 
         // Observer Design Pattern

@@ -11,9 +11,10 @@ android {
         versionCode 1
         versionName "1.0"
     }
+
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -21,6 +22,12 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:recyclerview-v7:21.0.+'
     compile project(':stickyindex')
+
+    compile 'com.android.support:recyclerview-v7:21.0.+'
+    compile 'com.android.support:cardview-v7:21.0.+'
+    compile 'com.github.shell-software:fab:1.1.1'
+    compile 'com.jpardogo.materialtabstrip:library:1.1.0'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.pkmmte.view:circularimageview:1.1'
 }

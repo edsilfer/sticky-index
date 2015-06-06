@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">StikyIndexSample</string>
+    <string name="app_name">Contacts</string>
+    <string name="action_settings">Settings</string>
 </resources>

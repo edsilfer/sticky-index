@@ -11,7 +11,8 @@
         android:layout_height="match_parent"
         android:clickable="false"
         android:focusableInTouchMode="false"
-        android:focusable="false" />
+        android:focusable="false"
+        android:background="@android:color/transparent"/>
 
     <TextView
         android:id="@+id/sticky_index"

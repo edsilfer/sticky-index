@@ -1,4 +1,4 @@
-package br.com.stikyindexsample;
+package br.com.stickyindexsample;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

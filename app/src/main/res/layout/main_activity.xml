@@ -10,7 +10,7 @@
         android:layout_height="match_parent"
         android:layout_marginLeft="60dp"/>
 
-    <br.com.stickyindex.Main
+    <br.com.stickyindex.StickyIndex
         android:id="@+id/sticky_index_container"
         android:layout_width="60dp"
         android:layout_height="match_parent" />
