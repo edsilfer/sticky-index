@@ -1,4 +1,5 @@
 #Sticky Index Library
+This repository contains the source code for a component that implements the " Sticky Letter Index" such as it is presented in the Android Contact App from Android Lollipop (API 21) on. Please feel free to use it as well as enhance it
 
 # Table of Contents
 * [Introduction](#intro)
@@ -17,7 +18,7 @@ Check below the library in a Contact app context:
 ![Demo](https://github.com/edsilfer/sticky-index/blob/master/app/demo/sticky_index_demo.gif)
 
 # <a name="how-to-use"></a>How to use
-First of all, add the followind component to your XML layout:
+First of all, add the following component to your XML layout:
 
 ```
 <br.com.stickyindex.StickyIndex
@@ -36,14 +37,13 @@ And then, initialize it in the container main class. Also add the dataSet (a cha
         indexContainer.setReferenceList(recyclerView);
 ```
 
-P.S.: so far the row height is set to 64dp, you should set your reference RecyclerView row height to the same size in order to maintain consistency between the two lists. Different size will lead to layout failures.
+**P.S.: so far the row height is set to 64dp, you should set your reference RecyclerView row height to the same size in order to maintain consistency between the two lists. Different size will lead to layout failures.**
 
-# <a name="to-do"></a>//TODO List
+# <a name="to-do"></a>TODO List
 * Upload library into JCenter/Maven;
 * Make index list background transparent in order to correct the detail when user pushes down the list in the top or bottom of it;
 * Add attributes gather from the XML in order to set the row height, text size, style and color;
 * Try to enhance the flying animation;
 
 # <a name="team-members"></a>Team Members
------------------------------------------
 * "Fernandes S. Edgar" <fernandes.s.edgar@gmail.com>
