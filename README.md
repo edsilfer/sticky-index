@@ -13,7 +13,7 @@ This repository contains the source code for a component that implements the " S
 
 
 # <a name="intro"></a>Introduction
-You got an smartphone with Android API 21+, took a look in the Contact app and got excited by those sticky letter that scrolls with the list in a beautiful manner? Well, this library intend to provide you, dear developer, the same component.
+You've just got a smartphone with Android API 21+, took a look in the "Contact" app and got excited by those sticky letters that scrolls with the list in a beautiful manner? Well, this library intend to provide you with the same component.
 
 # <a name="showcase"></a>Showcase
 Check below the library in a Contact app context:
