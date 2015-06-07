@@ -61,7 +61,8 @@ By last, initialize it in the container main class. Also add the dataSet (a char
 * Upload library into JCenter/Maven;
 * Make index list background transparent in order to correct the detail when user pushes down the list in the top or bottom of it;
 * Add attributes gather from the XML in order to set the row height, text size, style and color;
-* Try to enhance the flying animation;
+* Fix flying action (sometimes when scrolling too fast the sticky letter might get invisible);
+* Make it compatible with layout orientation horizontal;
 
 # <a name="team-members"></a>Team Members
 * "Fernandes S. Edgar" <fernandes.s.edgar@gmail.com>
