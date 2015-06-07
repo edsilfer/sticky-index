@@ -46,7 +46,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         ContactsViewHolder contactHolder = (ContactsViewHolder) holder;
 
         contactHolder.contactName.setText(dataSet.get(position).getName());
-        contactHolder.firstLetter.setText(String.valueOf(dataSet.get(position).getName().charAt(0)));
+        contactHolder.firstLetter.setText(String.valueOf(dataSet.get(position).getName().charAt(0)).toUpperCase());
 
         if (dataSet.get(position).getThumbnail() != null) {
             contactHolder.firstLetter.setVisibility(TextView.INVISIBLE);
@@ -91,7 +91,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     // Bubbler Filler ______________________________________________________________________________
     @Override
     public String getTextFromAdapter(int pos) {
-        return String.valueOf(dataSet.get(pos).getName().charAt(0));
+        return String.valueOf(dataSet.get(pos).getName().charAt(0)).toUpperCase();
     }
 
     // ViewHolder class ____________________________________________________________________________

@@ -52,7 +52,7 @@ By last, initialize it in the container main class. Also add the dataSet (a char
         StickyIndex indexContainer = (StickyIndex) this.findViewById(R.id.sticky_index_container);
         // INSERT CHAR LIST
         indexContainer.setDataSet(getIndexList(myContacts));
-        indexContainer.setReferenceList(recyclerView);
+        indexContainer.setReferenceList(indexList);
 ```
 
 **P.S.: so far the row height is set to 64dp, you should set your reference RecyclerView row height to the same size in order to maintain consistency between the two lists. Different size will lead to layout failures.**

@@ -12,9 +12,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
+        android:background="@android:color/transparent"
 
         android:text="ME"
-        android:textSize="20dp"
-        android:textStyle="bold"
+        android:textSize="@dimen/index_text_size"
         android:textColor="#8a8a8a"/>
 </LinearLayout>

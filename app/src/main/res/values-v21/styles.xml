@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="AppTheme" parent="android:Theme.Material.Light">
+    <style name="AppTheme" parent="Theme.AppCompat.Light">
         <!-- enable window content transitions -->
         <item name="android:windowContentTransitions">true</item>
 
         <!-- Main theme colors -->
-        <item name="android:colorAccent">@color/accent</item>
-        <item name="android:colorPrimary">@color/primary</item>
-        <item name="android:colorPrimaryDark">@color/primary_dark</item>
-        <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorAccent">@color/accent</item>
 
+        <item name="android:textColorPrimary">@color/text_primary</item>
         <item name="android:itemTextAppearance">@style/itemTextStyle.AppTheme</item>
     </style>
 

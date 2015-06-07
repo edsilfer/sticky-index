@@ -1,5 +1,6 @@
 package br.com.stickyindex.layout;
 
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -14,7 +15,7 @@ import br.com.stickyindex.model.Subscriber;
 public class IndexLayoutManager implements Subscriber {
 
     private TextView stickyIndex;
-    private RecyclerView recyclerView;
+    private RecyclerView indexList;
 
     // CONSTRUCTOR _________________________________________________________________________________
     public IndexLayoutManager(RelativeLayout rl) {
@@ -38,20 +39,27 @@ public class IndexLayoutManager implements Subscriber {
         }
     }
 
+    private void updatePosBasedOnReferenceList (RecyclerView referenceRv) {
+        View firstVisibleView = referenceRv.getChildAt(0);
+        int actual = referenceRv.getChildPosition(firstVisibleView);
+        ((LinearLayoutManager) indexList.getLayoutManager()).scrollToPositionWithOffset(actual, firstVisibleView.getTop() + 0);
+    }
+
     // SUBSCRIBER INTERFACE ________________________________________________________________________
     @Override
-    public void update(int position, float dy) {
-        if (recyclerView != null) {
-            View firstVisibleView = recyclerView.getChildAt(0);
-            View secondVisibleView = recyclerView.getChildAt(1);
+    public void update(RecyclerView referenceList, float dx, float dy) {
+        if (indexList != null) {
+            updatePosBasedOnReferenceList (referenceList);
+
+            View firstVisibleView = indexList.getChildAt(0);
+            View secondVisibleView = indexList.getChildAt(1);
 
             TextView firstRowIndex = (TextView) firstVisibleView.findViewById(R.id.sticky_row_index);
             TextView secondRowIndex = (TextView) secondVisibleView.findViewById(R.id.sticky_row_index);
 
-            int visibleRange = recyclerView.getChildCount();
-            int actual = recyclerView.getChildPosition(firstVisibleView);
+            int visibleRange = indexList.getChildCount();
+            int actual = indexList.getChildPosition(firstVisibleView);
             int next = actual + 1;
-            int previous = actual - 1;
             int last = actual + visibleRange;
 
             // RESET STICKY LETTER INDEX
@@ -95,8 +103,8 @@ public class IndexLayoutManager implements Subscriber {
     }
 
     // GETTERS AND SETTERS _________________________________________________________________________
-    public void setRecyclerView(RecyclerView recyclerView) {
-        this.recyclerView = recyclerView;
+    public void setIndexList(RecyclerView indexList) {
+        this.indexList = indexList;
     }
 
     private char getIndexContext (TextView index) {

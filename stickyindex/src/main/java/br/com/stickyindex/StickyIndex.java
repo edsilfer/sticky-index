@@ -7,20 +7,20 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.AbsListView;
 import android.widget.RelativeLayout;
 
 import br.com.stickyindex.adapter.IndexAdapter;
 import br.com.stickyindex.layout.IndexLayoutManager;
 import br.com.stickyindex.listener.IndexScrollListener;
+import br.com.stickyindex.model.Subscriber;
 
 
 /**
  * Created by edgar on 6/4/15.
  */
 public class StickyIndex extends RelativeLayout {
-    private RecyclerView referenceList;
     private RecyclerView indexList;
+    private IndexScrollListener scrollListener;
 
     private IndexAdapter adapter;
     private IndexLayoutManager stickyIndex;
@@ -64,26 +64,22 @@ public class StickyIndex extends RelativeLayout {
         adapter = new IndexAdapter(dataSet);
         this.indexList.setAdapter(adapter);
 
-        IndexScrollListener scrollListener = new IndexScrollListener(context);
-        scrollListener.setRecyRecyclerView(indexList);
-        indexList.setOnScrollListener(scrollListener);
+        scrollListener = new IndexScrollListener();
+        scrollListener.setOnScrollListener(indexList);
 
         this.stickyIndex = new IndexLayoutManager(this);
-        this.stickyIndex.setRecyclerView(indexList);
-
-        // Observer Design Pattern
+        this.stickyIndex.setIndexList(indexList);
         scrollListener.register(stickyIndex);
     }
 
     // UTIL ________________________________________________________________________________________
-    private void onIndexListScrolled (RecyclerView passedRecyclerView, int dx, int dy) {
-        View firstVisibleView = passedRecyclerView.getChildAt(0);
+    // Interface that provides a way for registering/unregister new subscribers to the onScrollEvent
+    public void subscribeForScrollListener(Subscriber nexSubscriber) {
+        scrollListener.register(nexSubscriber);
+    }
 
-        int actual = passedRecyclerView.getChildPosition(firstVisibleView);
-
-        ((LinearLayoutManager) indexList.getLayoutManager()).scrollToPositionWithOffset(actual, firstVisibleView.getTop() + 0);
-
-        stickyIndex.update(actual, dy);
+    public void removeScrollListenerSubscription(Subscriber oldSubscriber) {
+        scrollListener.unregister(oldSubscriber);
     }
 
     // GETTERs AND SETTERs__________________________________________________________________________
@@ -92,34 +88,11 @@ public class StickyIndex extends RelativeLayout {
         this.adapter.notifyDataSetChanged();
     }
 
-    public void setReferenceList(RecyclerView rl) {
-        this.referenceList = rl;
+    public IndexLayoutManager getStickyIndex() {
+        return stickyIndex;
+    }
 
-        this.referenceList.setOnScrollListener(new RecyclerView.OnScrollListener() {
-            private View currentFirstVisibleItem;
-            private int currentVisibleItemCount;
-
-            @Override
-            public void onScrolled(RecyclerView passedRecyclerView, int dx, int dy) {
-                super.onScrolled(passedRecyclerView, dx, dy);
-
-                currentFirstVisibleItem = passedRecyclerView.getChildAt(0);
-                currentVisibleItemCount = passedRecyclerView.getChildPosition(currentFirstVisibleItem);
-
-                onIndexListScrolled (passedRecyclerView, dx, dy);
-            }
-
-            @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                super.onScrollStateChanged(recyclerView, newState);
-                this.isScrollCompleted(newState);
-            }
-
-            private void isScrollCompleted(int currentState) {
-                if (this.currentVisibleItemCount > 0 && currentState == AbsListView.OnScrollListener.SCROLL_STATE_IDLE) {
-                    // TODO: FIX BUG WHEN FLYING RECYCLER VIEW
-                }
-            }
-        });
+    public void setOnScrollListener(RecyclerView rl) {
+        scrollListener.setOnScrollListener(rl);
     }
 }

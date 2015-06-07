@@ -14,8 +14,9 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import br.com.stickyindex.layout.IndexLayoutManager;
+import br.com.stickyindex.model.Subscriber;
 import br.com.stickyindexsample.R;
-import br.com.stickyindexsample.model.Subscriber;
 
 public class FastScroller extends LinearLayout implements Subscriber {
     private static final int BUBBLE_ANIMATION_DURATION = 250;
@@ -26,6 +27,8 @@ public class FastScroller extends LinearLayout implements Subscriber {
     private View handle;
     private int height;
     private ObjectAnimator bubbleAnimator = null;
+
+    private IndexLayoutManager stickyIndex;
 
 
     // CONSTRUCTORS ________________________________________________________________________________
@@ -97,7 +100,6 @@ public class FastScroller extends LinearLayout implements Subscriber {
             case MotionEvent.ACTION_CANCEL:
                 handle.setSelected(false);
                 hideBubble();
-                //hideHandler ();
 
                 return true;
         }
@@ -128,6 +130,10 @@ public class FastScroller extends LinearLayout implements Subscriber {
 
             //Log.d("AppLog", "targetPos:" + targetPos);
 
+            if (stickyIndex != null) {
+                stickyIndex.update(recyclerView, 0, 1);
+            }
+
             ((LinearLayoutManager) recyclerView.getLayoutManager()).scrollToPositionWithOffset(targetPos, 0);
             String bubbleText = ((TextGetter) recyclerView.getAdapter()).getTextFromAdapter(targetPos);
 
@@ -150,6 +156,10 @@ public class FastScroller extends LinearLayout implements Subscriber {
 
     public int getFastScrollHeight() {
         return height;
+    }
+
+    public void setStickyIndex(IndexLayoutManager stickyIndex) {
+        this.stickyIndex = stickyIndex;
     }
 
     // UI __________________________________________________________________________________________
@@ -189,8 +199,25 @@ public class FastScroller extends LinearLayout implements Subscriber {
 
     // SUBSCRIBER INTERFACE ________________________________________________________________________
     @Override
-    public void update(RecyclerViewOnScrollListener.RecyclerViewDataObject currentRowState) {
-        float proportion = (float) currentRowState.getPosition() / (float) recyclerView.getAdapter().getItemCount();
+    public void update(RecyclerView rv, float dx, float dy) {
+        View firstVisibleView=recyclerView.getChildAt(0);
+
+        int firstVisiblePosition=recyclerView.getChildPosition(firstVisibleView);
+        int visibleRange=recyclerView.getChildCount();
+        int lastVisiblePosition=firstVisiblePosition+visibleRange;
+        int itemCount=recyclerView.getAdapter().getItemCount();
+        int position;
+
+        if(firstVisiblePosition==0) {
+            position = 0;
+        } else if(lastVisiblePosition==itemCount) {
+            position = itemCount;
+        } else {
+            position = (int) (((float) firstVisiblePosition / (((float) itemCount - (float) visibleRange))) * (float) itemCount);
+        }
+
+        float proportion=(float)position/(float)itemCount;
+
         setBubbleAndHandlePosition(getFastScrollHeight() * proportion);
     }
 }

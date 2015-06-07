@@ -3,7 +3,8 @@
 <merge
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="60dp"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/index_list"
@@ -21,7 +22,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginLeft="20dp"
 
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:textColor="#8a8a8a"/>
+        android:textSize="@dimen/index_text_size"
+        android:textColor="#8a8a8a"
+        android:background="@android:color/transparent"/>
 </merge>

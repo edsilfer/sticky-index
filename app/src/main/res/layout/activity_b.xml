@@ -87,5 +87,5 @@
             android:elevation="2dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="15dp"
-            android:transitionName="contact_thumbnail"/>
+            android:transitionName="contact_thumbnail" />
 </RelativeLayout>
