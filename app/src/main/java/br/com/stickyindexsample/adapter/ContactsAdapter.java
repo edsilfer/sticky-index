@@ -10,14 +10,14 @@ import br.com.stickyindexsample.FavoritesFragments;
 /**
  * Created by Edgar on 30/04/2015.
  */
-public class ViewPagerAdapter extends FragmentPagerAdapter {
+public class ContactsAdapter extends FragmentPagerAdapter {
 
     private static ContactsFragment CONTACTS_FRAGMENT = new ContactsFragment();
     private static FavoritesFragments FAVORITES_FRAGMENT = new FavoritesFragments();
 
     private Context mContext;
 
-    public ViewPagerAdapter(FragmentManager fm, Context context) {
+    public ContactsAdapter(FragmentManager fm, Context context) {
         super(fm);
         mContext = context;
     }

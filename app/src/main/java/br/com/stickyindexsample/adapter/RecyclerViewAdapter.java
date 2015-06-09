@@ -1,8 +1,12 @@
 package br.com.stickyindexsample.adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
+import android.net.Uri;
+import android.os.AsyncTask;
+import android.provider.MediaStore;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +15,8 @@ import android.widget.TextView;
 
 import com.pkmmte.view.CircularImageView;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 import java.util.Random;
 
@@ -43,13 +49,34 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        ContactsViewHolder contactHolder = (ContactsViewHolder) holder;
+        final ContactsViewHolder contactHolder = (ContactsViewHolder) holder;
 
         contactHolder.contactName.setText(dataSet.get(position).getName());
         contactHolder.firstLetter.setText(String.valueOf(dataSet.get(position).getName().charAt(0)).toUpperCase());
 
         if (dataSet.get(position).getThumbnail() != null) {
             contactHolder.firstLetter.setVisibility(TextView.INVISIBLE);
+
+            new AsyncTask<Uri, Integer, Bitmap>() {
+                @Override
+                protected Bitmap doInBackground(Uri... params) {
+                    try {
+                        return MediaStore.Images.Media.getBitmap(context.getContentResolver(), params[0]);
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                        return null;
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        return null;
+                    }
+                }
+
+                @Override
+                protected void onPostExecute(Bitmap b) {
+                    contactHolder.thumbnail.setImageBitmap(b);
+                }
+            }.execute(dataSet.get(position).getThumbnail());
+
             contactHolder.thumbnail.setImageURI(dataSet.get(position).getThumbnail());
         } else {
             contactHolder.firstLetter.setVisibility(TextView.VISIBLE);
@@ -102,7 +129,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
         public ContactsViewHolder (View v) {
             super (v);
-            firstLetter = (TextView) v.findViewById(R.id.contact_fl);
+            firstLetter = (TextView) v.findViewById(R.id.contact_first_letter);
             contactName = (TextView) v.findViewById(R.id.contact_name);
             thumbnail = (CircularImageView) v.findViewById(R.id.contact_thumbnail);
         }

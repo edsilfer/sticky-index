@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -13,10 +12,16 @@
         android:layout_height="?attr/actionBarSize"
         android:background="@color/primary"
         android:textColor="@color/text_primary"
-        android:elevation="4dp"/>
+        android:elevation="4dp"
+
+        app:pstsIndicatorColor="@color/text_primary"
+        app:pstsUnderlineColor="@color/text_primary"
+        app:pstsDividerColor="@color/primary"
+        app:pstsShouldExpand="true"/>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/pager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-</LinearLayout>
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tabs"/>
+</RelativeLayout>

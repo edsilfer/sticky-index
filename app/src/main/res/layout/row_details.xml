@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/row_layout_wrapper"
     android:layout_width="match_parent"
     android:layout_height="64dp"
@@ -26,7 +27,7 @@
                 android:transitionName="contact_thumbnail"/>
 
             <TextView
-                android:id="@+id/contact_fl"
+                android:id="@+id/contact_first_letter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
@@ -34,7 +35,9 @@
 
                 android:text="A"
                 android:textSize="26dp"
-                android:textColor="@color/text_primary" />
+                android:textColor="@color/text_primary"
+
+                android:transitionName="contact_name"/>
         </RelativeLayout>
 
         <TextView

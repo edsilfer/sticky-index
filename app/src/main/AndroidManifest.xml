@@ -1,11 +1,11 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
     package="br.com.stickyindexsample">
 
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
-    <provider android:name=".data_providers.SuggestionProvider"
-        android:authorities="br.com.contacts.SuggestionProvider" />
+
 
     <application
         android:name=".layout.AppContext"
@@ -13,8 +13,12 @@
         android:icon="@mipmap/ic_launcher"
         android:theme="@style/AppTheme">
 
+        <provider android:name=".data_providers.SuggestionProvider"
+            android:authorities="br.com.stickyindexsample.data_providers.SuggestionProvider" />
+
         <activity
-            android:name=".MainActivity" >
+            android:name=".MainActivity"
+            android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

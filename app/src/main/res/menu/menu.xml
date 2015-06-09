@@ -1,4 +1,5 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="br.com.stickyindexsample">
@@ -15,6 +16,6 @@
         android:id="@+id/action_search"
         android:orderInCategory="200"
         android:title="Search"
-        android:icon="@android:drawable/ic_menu_search"
-        android:showAsAction="always|collapseActionView"/>
+        android:icon="@mipmap/ic_search_white_24dp"
+        app:showAsAction="ifRoom"/>
 </menu>
