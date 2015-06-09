@@ -18,7 +18,9 @@ You've just got a smartphone with Android API 21+, took a look in the "Contact" 
 # <a name="showcase"></a>Showcase
 Check below the library in a Contact app context:
 
-![Demo](https://github.com/edsilfer/sticky-index/blob/master/app/demo/sticky_index_demo.gif)
+![Demo](https://github.com/edsilfer/sticky-index/blob/master/app/demo/horizontal-demo.gif)   
+
+![Demo](https://github.com/edsilfer/sticky-index/blob/master/app/demo/vertical-demo.gif)
 
 # <a name="how-to-use"></a>How to use
 First of all, add the following dependencies to your build.gradle:
