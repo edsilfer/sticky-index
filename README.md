@@ -1,7 +1,7 @@
 #Sticky Index Library
 This repository contains the source code for a component that implements the " Sticky Letter Index" such as it is presented in the Android Contact App from Android Lollipop (API 21) on. Please feel free to use it as well as enhance it
 
-**Dont't forget to read the P.S. at the [how to use](#how-to-use) section**
+**Dont't forget to read the P.S.1 at the [how to use](#how-to-use) section**
 
 # Table of Contents
 * [Introduction](#intro)
@@ -47,6 +47,16 @@ Then, add this component to your XML layout (usualy, right after the RecyclerVie
         android:layout_height="match_parent" />
 ```
 
+You can customizing the stick-index with the following arguments:
+
+```xml
+android:textSize
+android:textStyle
+android:textColor
+android:rowHeight
+```
+**The last attribute ```xml android:rowHeight``` is mandatory. Understand that the sticky-index consists of another RecyclerView which needs to match the reference one (in terms of ScrollListener and rowHeight). Having different rowHeights WILL lead to layout failures.**
+
 By last, initialize it in the container main class. Also add the dataSet (a char array that will contain the indexes). This array must have the same size as the main list, with each row corresponding to the element that it will be associated). Finally, set the corresponding RecyclerVIew that will control the scroll movement:
 
 ```java
@@ -57,7 +67,9 @@ By last, initialize it in the container main class. Also add the dataSet (a char
         indexContainer.setReferenceList(indexList);
 ```
 
-**P.S.: so far the row height is set to 64dp, you should set your reference RecyclerView row height to the same size in order to maintain consistency between the two lists. Different size will lead to layout failures.**
+**P.S.1: Please, don't forget to set the android:rowHeight attribute to match your RecyclerView row height**
+
+P.S.2.: As said above, **the sticky-index is another RecyclerView that needs to match the reference one** (which you should provide). In order to sync the scroll action of both, a **OnScrollListener** of your given RecyclerView is created inside the library. If you need to receive scroll updates, please, create a class that implements the interface **Subscriber** and register it inside **StickyIndex** class through the method ```subscribeForScrollListener()```. The ```update``` method is equivalent to the ```onScroll()``` method of the **OnScrollView**. If the action that you'll develop inside your update need to affect the scroll of the sticky-index list, the method ```getStickyIndex()``` is provided through the class **StickyIndex**. The returned instance has a call for the method ```update``` (Refer to the demo app code for further details, there the described approach is implemented to make the sticky-index compatible with the fastscroller class)
 
 # <a name="to-do"></a>TODO List
 * Upload library into JCenter/Maven;
