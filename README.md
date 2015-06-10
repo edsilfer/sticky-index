@@ -73,10 +73,13 @@ P.S.2.: As said above, **the sticky-index is another RecyclerView that needs to 
 
 # <a name="to-do"></a>TODO List
 * Upload library into JCenter/Maven;
-* Make index list background transparent in order to correct the detail when user pushes down the list in the top or bottom of it;
-* Add attributes gather from the XML in order to set the row height, text size, style and color;
+* ~~Make index list background transparent in order to correct the detail when user pushes down the list in the top or bottom of it;~~
+* ~~Add attributes gather from the XML in order to set the row height, text size, style and color;~~
 * Fix flying action (sometimes when scrolling too fast the sticky letter might get invisible);
-* Make it compatible with layout orientation horizontal;
+* ~~Make it compatible with layout orientation horizontal;~~
+* Improve Search Dialog from demo app;
+* Rename app project to demo;
+* Create separeted branch for art;
 
 # <a name="team-members"></a>Team Members
 * "Fernandes S. Edgar" <fernandes.s.edgar@gmail.com>
