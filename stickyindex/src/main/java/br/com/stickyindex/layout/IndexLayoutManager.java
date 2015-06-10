@@ -110,4 +110,8 @@ public class IndexLayoutManager implements Subscriber {
     private char getIndexContext (TextView index) {
         return index.getText().charAt(0);
     }
+
+    public TextView getStickyIndex() {
+        return stickyIndex;
+    }
 }

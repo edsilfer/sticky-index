@@ -3,8 +3,7 @@
 <merge
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="60dp"
-    android:layout_height="match_parent"
-    android:background="@android:color/transparent">
+    android:layout_height="match_parent">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/index_list"
@@ -12,17 +11,13 @@
         android:layout_height="match_parent"
         android:clickable="false"
         android:focusableInTouchMode="false"
-        android:focusable="false"
-        android:background="@android:color/transparent"/>
+        android:focusable="false" />
 
     <TextView
         android:id="@+id/sticky_index"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="20dp"
 
-        android:textSize="@dimen/index_text_size"
-        android:textColor="#8a8a8a"
-        android:background="@android:color/transparent"/>
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp" />
 </merge>

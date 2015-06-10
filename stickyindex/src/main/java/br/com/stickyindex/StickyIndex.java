@@ -1,6 +1,7 @@
 package br.com.stickyindex;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
@@ -28,25 +29,25 @@ public class StickyIndex extends RelativeLayout {
     // Constructors ________________________________________________________________________________
     public StickyIndex(Context context) {
         super(context);
-        initialize(context);
+        initialize(context, null);
     }
 
     public StickyIndex(Context context, AttributeSet attrs) {
         super(context, attrs);
-        initialize (context);
+        initialize (context, attrs);
     }
 
     public StickyIndex(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        initialize (context);
+        initialize (context, attrs);
     }
 
     public StickyIndex(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
-        initialize (context);
+        initialize (context, attrs);
     }
 
-    private void initialize (Context context) {
+    private void initialize (Context context, AttributeSet attrs) {
         LayoutInflater layoutInflater = LayoutInflater.from(context);
         layoutInflater.inflate(R.layout.sticky_index, this, true);
 
@@ -61,7 +62,9 @@ public class StickyIndex extends RelativeLayout {
         });
 
         char[] dataSet = {};
-        adapter = new IndexAdapter(dataSet);
+
+        IndexAdapter.RowStyle styles = getRowStyle(context, attrs);
+        adapter = new IndexAdapter(dataSet, styles);
         this.indexList.setAdapter(adapter);
 
         scrollListener = new IndexScrollListener();
@@ -70,9 +73,48 @@ public class StickyIndex extends RelativeLayout {
         this.stickyIndex = new IndexLayoutManager(this);
         this.stickyIndex.setIndexList(indexList);
         scrollListener.register(stickyIndex);
+
+        // Call after stickyindex has been initialized
+        setStickyIndexStyle (styles);
     }
 
     // UTIL ________________________________________________________________________________________
+    private IndexAdapter.RowStyle getRowStyle (Context context, AttributeSet attrs) {
+        if (attrs != null) {
+            TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.StickyIndex);
+
+            int textSize = typedArray.getDimensionPixelSize(R.styleable.StickyIndex_android_textSize, -1);
+            int textColor = typedArray.getColor(R.styleable.StickyIndex_android_textColor, -1);
+
+            textSize = (textSize != -1) ? textSize : 26;
+            textColor = (textColor != -1) ? textColor : getResources().getColor(R.color.index_text_color);
+
+            return new IndexAdapter.RowStyle(
+                    typedArray.getDimension(R.styleable.StickyIndex_rowHeight, -1f),
+                    textColor,
+                    textSize,
+                    typedArray.getInt(R.styleable.StickyIndex_android_textStyle, -1)
+            );
+
+        } else {
+            return null;
+        }
+    }
+
+    private void setStickyIndexStyle (IndexAdapter.RowStyle styles) {
+        if (styles.getTextSize() != -1) {
+            stickyIndex.getStickyIndex().setTextSize(styles.getTextSize());
+        }
+
+        if (styles.getTextColor() != null) {
+            stickyIndex.getStickyIndex().setTextColor(styles.getTextColor());
+        }
+
+        if (styles.getTextStyle() != -1) {
+            stickyIndex.getStickyIndex().setTypeface(null, styles.getTextStyle());
+        }
+    }
+
     // Interface that provides a way for registering/unregister new subscribers to the onScrollEvent
     public void subscribeForScrollListener(Subscriber nexSubscriber) {
         scrollListener.register(nexSubscriber);

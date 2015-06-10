@@ -4,17 +4,11 @@
     android:orientation="vertical"
     android:layout_width="60dp"
     android:layout_height="64dp"
-    android:padding="10dp"
-    android:background="@android:color/transparent" >
+    android:padding="10dp" >
 
     <TextView
         android:id="@+id/sticky_row_index"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:background="@android:color/transparent"
-
-        android:text="ME"
-        android:textSize="@dimen/index_text_size"
-        android:textColor="#8a8a8a"/>
+        android:layout_marginLeft="10dp" />
 </LinearLayout>
