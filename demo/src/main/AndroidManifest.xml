@@ -1,0 +1,40 @@
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    package="br.com.stickyindexsample">
+
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
+
+
+    <application
+        android:name=".layout.AppContext"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:theme="@style/AppTheme">
+
+        <provider android:name=".data_providers.SuggestionProvider"
+            android:authorities="br.com.stickyindexsample.data_providers.SuggestionProvider" />
+
+        <activity
+            android:name=".MainActivity"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+
+            <meta-data android:name="android.app.searchable"
+                android:resource="@layout/searchable"/>
+        </activity>
+
+        <activity
+            android:name=".ActivityB"
+            android:theme="@android:style/Theme.Material.Light.NoActionBar" />
+    </application>
+</manifest>

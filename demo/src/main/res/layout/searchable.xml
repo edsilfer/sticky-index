@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<searchable
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:label="@string/app_name"
+    android:hint="Search songs, albums, artist and chats"
+    android:searchSuggestAuthority="br.com.contacts.SuggestionProvider"
+    android:searchSuggestSelection=" ?"
+    android:voiceSearchMode="showVoiceSearchButton|launchRecognizer">
+</searchable>
