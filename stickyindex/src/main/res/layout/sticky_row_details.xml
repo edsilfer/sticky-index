@@ -4,11 +4,11 @@
     android:orientation="vertical"
     android:layout_width="60dp"
     android:layout_height="64dp"
-    android:padding="10dp" >
+    android:gravity="center" >
 
     <TextView
         android:id="@+id/sticky_row_index"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp" />
+        android:visibility="invisible"/>
 </LinearLayout>

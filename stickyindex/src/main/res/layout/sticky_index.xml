@@ -13,11 +13,16 @@
         android:focusableInTouchMode="false"
         android:focusable="false" />
 
-    <TextView
-        android:id="@+id/sticky_index"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/sticky_index_wrapper"
+        android:layout_width="60dp"
         android:layout_height="wrap_content"
+        android:gravity="center">
 
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="20dp" />
+        <TextView
+            android:id="@+id/sticky_index"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"/>
+    </LinearLayout>
 </merge>

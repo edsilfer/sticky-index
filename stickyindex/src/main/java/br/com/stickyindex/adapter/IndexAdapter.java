@@ -57,9 +57,7 @@ public class IndexAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         IndexViewHolder viewHolder = (IndexViewHolder) holder;
 
-        String curr = String.valueOf(dataSet[position]);
-
-        viewHolder.index.setText(curr);
+        viewHolder.index.setText(Character.toString(dataSet[position]));
 
         if (isHeader(position)) {
             viewHolder.index.setVisibility(TextView.VISIBLE);

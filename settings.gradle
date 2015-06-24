@@ -1,1 +1,1 @@
-include ':stickyindex', 'app'
+include ':stickyindex', ':demo'

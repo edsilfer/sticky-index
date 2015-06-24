@@ -84,7 +84,6 @@ public class IndexLayoutManager implements Subscriber {
                 if (next <= last) {
                     // RESET FIRST ROW STATE
                     firstRowIndex.setVisibility(TextView.INVISIBLE);
-
                     if ((isHeader(firstRowIndex, secondRowIndex) || (getIndexContext(firstRowIndex) != getIndexContext(secondRowIndex))) && isHeader(firstRowIndex, secondRowIndex)) {
                         stickyIndex.setVisibility(TextView.INVISIBLE);
                         firstRowIndex.setVisibility(TextView.VISIBLE);
@@ -97,7 +96,7 @@ public class IndexLayoutManager implements Subscriber {
             }
 
             if (stickyIndex.getVisibility() == TextView.VISIBLE) {
-                firstRowIndex.setVisibility(TextView.INVISIBLE);
+                //firstRowIndex.setVisibility(TextView.INVISIBLE);
             }
         }
     }
@@ -106,7 +105,7 @@ public class IndexLayoutManager implements Subscriber {
     public void setIndexList(RecyclerView indexList) {
         this.indexList = indexList;
     }
-
+/**/
     private char getIndexContext (TextView index) {
         return index.getText().charAt(0);
     }

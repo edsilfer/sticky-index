@@ -8,6 +8,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import br.com.stickyindex.adapter.IndexAdapter;
@@ -54,8 +55,9 @@ public class StickyIndex extends RelativeLayout {
         // Creates RecyclerView and its layout
         this.indexList = (RecyclerView) this.findViewById(R.id.index_list);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
-        indexList.setLayoutManager(linearLayoutManager);
-        indexList.setOnTouchListener(new OnTouchListener() {
+
+        this.indexList.setLayoutManager(linearLayoutManager);
+        this.indexList.setOnTouchListener(new OnTouchListener() {
             public boolean onTouch(View v, MotionEvent event) {
                 return (event.getAction() == MotionEvent.ACTION_MOVE);
             }
@@ -64,11 +66,11 @@ public class StickyIndex extends RelativeLayout {
         char[] dataSet = {};
 
         IndexAdapter.RowStyle styles = getRowStyle(context, attrs);
-        adapter = new IndexAdapter(dataSet, styles);
+        this.adapter = new IndexAdapter(dataSet, styles);
         this.indexList.setAdapter(adapter);
 
-        scrollListener = new IndexScrollListener();
-        scrollListener.setOnScrollListener(indexList);
+        this.scrollListener = new IndexScrollListener();
+        this.scrollListener.setOnScrollListener(indexList);
 
         this.stickyIndex = new IndexLayoutManager(this);
         this.stickyIndex.setIndexList(indexList);
@@ -102,6 +104,13 @@ public class StickyIndex extends RelativeLayout {
     }
 
     private void setStickyIndexStyle (IndexAdapter.RowStyle styles) {
+        if (styles.getRowHeigh() != -1) {
+            LinearLayout stickyIndexWrapper = (LinearLayout) this.findViewById(R.id.sticky_index_wrapper);
+            android.view.ViewGroup.LayoutParams params = stickyIndexWrapper.getLayoutParams();
+            params.height = styles.getRowHeigh().intValue();
+            stickyIndexWrapper.setLayoutParams(params);
+        }
+
         if (styles.getTextSize() != -1) {
             stickyIndex.getStickyIndex().setTextSize(styles.getTextSize());
         }
