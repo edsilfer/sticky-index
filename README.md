@@ -49,11 +49,11 @@ Then, add this component to your XML layout (usualy, right after the RecyclerVie
 
 You can customizing the stick-index with the following arguments:
 
-```xml android:textSize```: changes the index list text size;
-```xml android:textStyle```: changes the index list text style;
-```xml android:textColor```: changes the index list test color;
-```xml app:rowHeight```: changes the index list row height;
-```xml app:stickyWidth```: changes the LinearLayout width that wrappers the text - which, by its turn, it is centralized inside it. Use this atribute to control the distance of the index list from the corner of its parent.
+ * ```xml android:textSize```: changes the index list text size;
+ * ```xml android:textStyle```: changes the index list text style;
+ * ```xml android:textColor```: changes the index list test color;
+ * ```xml app:rowHeight```: changes the index list row height;
+ * ```xml app:stickyWidth```: changes the LinearLayout width that wrappers the text - which, by its turn, it is centralized inside it. Use this atribute to control the distance of the index list from the corner of its parent.
 
 **The last attribute ```xml android:rowHeight``` is mandatory. Understand that the sticky-index consists of another RecyclerView which needs to match the reference one (in terms of ScrollListener and rowHeight). Having different rowHeights WILL lead to layout failures.**
 
