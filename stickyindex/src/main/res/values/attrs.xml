@@ -2,6 +2,7 @@
 <resources>
     <declare-styleable name="StickyIndex">
         <attr name="rowHeight" format="dimension"/>
+        <attr name="stickyWidth" format="dimension"/>
         <attr name="android:textColor" />
         <attr name="android:textSize" />
         <attr name="android:textStyle" />

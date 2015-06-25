@@ -15,6 +15,7 @@ public class IndexAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     private char[] dataSet;
     private RowStyle rowStyle;
+    private char prev;
 
     // CONSTRUCTOR _________________________________________________________________________________
     public IndexAdapter (char[] data, RowStyle style) {
@@ -32,6 +33,7 @@ public class IndexAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             if (rowStyle.getRowHeigh() != -1) {
                 android.view.ViewGroup.LayoutParams params = view.getLayoutParams();
                 params.height = rowStyle.getRowHeigh().intValue();
+                params.width = rowStyle.getStickyWidth().intValue();
                 view.setLayoutParams(params);
             }
 
@@ -56,6 +58,7 @@ public class IndexAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         IndexViewHolder viewHolder = (IndexViewHolder) holder;
+
 
         viewHolder.index.setText(Character.toString(dataSet[position]));
 
@@ -108,15 +111,25 @@ public class IndexAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     public static class RowStyle {
         Float rowHeigh;
+        Float stickyWidth;
         Integer textColor;
         Integer textSize;
         Integer textStyle;
 
-        public RowStyle (Float rHeight, Integer tColor, Integer tSize, Integer tStyle) {
+        public RowStyle (Float rHeight, Float sWidth, Integer tColor, Integer tSize, Integer tStyle) {
             rowHeigh = rHeight;
+            stickyWidth = sWidth;
             textColor = tColor;
             textSize = tSize;
             textStyle = tStyle;
+        }
+
+        public Float getStickyWidth() {
+            return stickyWidth;
+        }
+
+        public void setStickyWidth(Float stickyWidth) {
+            this.stickyWidth = stickyWidth;
         }
 
         public Float getRowHeigh() {

@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.astuetz.PagerSlidingTabStrip;
 
+import br.com.customsearchable.SearchActivity;
 import br.com.stickyindexsample.adapter.ContactsAdapter;
 
 /**
@@ -72,7 +73,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if (id == R.id.action_search) {
-            onSearchRequested();
+            //onSearchRequested();
+            Intent intent = new Intent(this, SearchActivity.class);
+            startActivity(intent);
+
             tabs.animate().translationY(-tabs.getHeight());
             viewPager.animate().translationY(-tabs.getHeight());
             return true;

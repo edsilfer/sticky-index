@@ -1,5 +1,25 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.jfrog.bintray'
 apply plugin: 'com.github.dcendents.android-maven'
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion "22.0.1"
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
 
 ext {
     bintrayRepo = 'maven'
@@ -9,7 +29,7 @@ ext {
     libraryName = 'IndexLayoutManager'
     artifact = 'sticky-index'
 
-    libraryDescription = 'A component that implements the " Sticky Letter Index" such as it is presented in the Android Contact App from Android Lollipop (API 21) on.'
+    libraryDescription = 'A component that implements the "Sticky Letter Index" such as it is presented in the Android Contact App from Android Lollipop (API 21) on.'
 
     siteUrl = 'https://github.com/edsilfer/sticky-index'
     gitUrl = 'https://github.com/edsilfer/sticky-index.git'
@@ -23,25 +43,9 @@ ext {
     licenseName = 'The Apache Software License, Version 2.0'
     licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
     allLicenses = ["Apache-2.0"]
-}
 
-android {
-    compileSdkVersion 22
-    buildToolsVersion "22.0.1"
-
-    defaultConfig {
-        minSdkVersion 22
-        targetSdkVersion 22
-        versionCode 1
-        versionName "1.0"
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
+    apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+    apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
 }
 
 dependencies {

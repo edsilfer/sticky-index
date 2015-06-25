@@ -7,7 +7,7 @@ import android.os.Parcelable;
 /**
  * Created by Edgar on 29/05/2015.
  */
-public class Contact implements Parcelable {
+public class Contact implements Parcelable, Comparable<Contact> {
     private String _id;
     private String name;
     private Uri thumbnail;
@@ -73,4 +73,19 @@ public class Contact implements Parcelable {
             return new Contact[size];
         }
     };
+
+    // _____________________________________________________________________________________________
+    @Override
+    public boolean equals (Object o) {
+        if ((o instanceof Contact) && (this.name.equalsIgnoreCase(((Contact) o).getName()))) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public int compareTo(Contact another) {
+        return this.getName().compareToIgnoreCase(another.getName());
+    }
 }

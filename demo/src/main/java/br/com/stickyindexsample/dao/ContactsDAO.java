@@ -6,6 +6,8 @@ import android.provider.ContactsContract;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 import br.com.stickyindexsample.layout.AppContext;
 import br.com.stickyindexsample.model.Contact;
@@ -16,7 +18,7 @@ import br.com.stickyindexsample.model.Contact;
 public class ContactsDAO {
     // LIST ________________________________________________________________________________________
     public static List<Contact> listMappedContacts() {
-        List<Contact> result = new ArrayList<Contact>();
+        Set<Contact> result = new TreeSet<>();
 
         Cursor cursor = listContacts();
 
@@ -25,20 +27,13 @@ public class ContactsDAO {
             Contact actual = null;
 
             do {
-                actual = mapContact(cursor);
-                // FILTER WHAT TO ADD TO PREVENT MULTIPLE ENTRANCES FOR CONTACT
-                if (!previous.equals("")) {
-                    if (!previous.equals(actual.getName())) {
-                        result.add(actual);
-                    }
-                } else {
-                    result.add(actual);
-                }
-                previous = actual.getName();
+                result.add(mapContact(cursor));
             } while (cursor.moveToNext());
         }
 
-        return result;
+        cursor.close();
+
+        return new ArrayList<>(result);
     }
 
     private static Boolean isHeader(String n1, String n2) {

@@ -1,13 +1,13 @@
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="br.com.stickyindexsample">
 
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
-
-
     <application
+        tools:replace="android:name"
         android:name=".layout.AppContext"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -29,8 +29,9 @@
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
 
-            <meta-data android:name="android.app.searchable"
-                android:resource="@layout/searchable"/>
+            <meta-data
+                android:name="edsilfer.app.default_searchable"
+                android:value="br.com.stickyindexsample.MainActivity" />
         </activity>
 
         <activity

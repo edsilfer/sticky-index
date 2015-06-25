@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import br.com.stickyindex.StickyIndex;
@@ -61,7 +62,7 @@ public class ContactsFragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mActivity);
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(myContacts, mActivity);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter (new ArrayList<>(myContacts), mActivity);
         recyclerView.setAdapter(adapter);
         implementsRecyclerViewOnItemClickListener();
 

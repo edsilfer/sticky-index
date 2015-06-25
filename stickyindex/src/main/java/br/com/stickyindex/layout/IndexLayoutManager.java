@@ -49,7 +49,7 @@ public class IndexLayoutManager implements Subscriber {
     @Override
     public void update(RecyclerView referenceList, float dx, float dy) {
         if (indexList != null) {
-            updatePosBasedOnReferenceList (referenceList);
+            updatePosBasedOnReferenceList(referenceList);
 
             View firstVisibleView = indexList.getChildAt(0);
             View secondVisibleView = indexList.getChildAt(1);
@@ -65,6 +65,7 @@ public class IndexLayoutManager implements Subscriber {
             // RESET STICKY LETTER INDEX
             stickyIndex.setText(String.valueOf(getIndexContext(firstRowIndex)).toUpperCase());
             stickyIndex.setVisibility(TextView.VISIBLE);
+            firstRowIndex.setAlpha(1);
 
             if (dy > 0) {
                 // USER SCROLLING DOWN THE RecyclerView
@@ -96,7 +97,7 @@ public class IndexLayoutManager implements Subscriber {
             }
 
             if (stickyIndex.getVisibility() == TextView.VISIBLE) {
-                //firstRowIndex.setVisibility(TextView.INVISIBLE);
+                firstRowIndex.setVisibility(TextView.INVISIBLE);
             }
         }
     }
