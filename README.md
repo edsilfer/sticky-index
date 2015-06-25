@@ -18,9 +18,9 @@ You've just got a smartphone with Android API 21+, took a look in the "Contact" 
 # <a name="showcase"></a>Showcase
 Check below the library in a Contact app context:
 
-![Demo](https://github.com/edsilfer/sticky-index/blob/master/app/demo/horizontal-demo.gif)   
+![Demo](https://github.com/edsilfer/sticky-index/blob/master/art/horizontal-demo.gif)   
 
-![Demo](https://github.com/edsilfer/sticky-index/blob/master/app/demo/vertical-demo.gif)
+![Demo](https://github.com/edsilfer/sticky-index/blob/master/art/vertical-demo.gif)
 
 # <a name="how-to-use"></a>How to use
 First of all, add the following dependencies to your build.gradle:
@@ -33,7 +33,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.github.edsilfer:sticky-index:1.1.0'
+    compile 'com.github.edsilfer:sticky-index:1.2.0'
 }
 
 ```
@@ -75,11 +75,11 @@ P.S.2.: As said above, **the sticky-index is another RecyclerView that needs to 
 * Upload library into JCenter/Maven;
 * ~~Make index list background transparent in order to correct the detail when user pushes down the list in the top or bottom of it;~~
 * ~~Add attributes gather from the XML in order to set the row height, text size, style and color;~~
-* Fix flying action (sometimes when scrolling too fast the sticky letter might get invisible);
+* ~~Fix flying action (sometimes when scrolling too fast the sticky letter might get invisible);~~
 * ~~Make it compatible with layout orientation horizontal;~~
 * Improve Search Dialog from demo app;
-* Rename app project to demo;
-* Create separeted branch for art;
+* ~~Rename app project to demo;~~
+* ~~Create separeted branch for art;~~
 
 # <a name="team-members"></a>Team Members
 * "Fernandes S. Edgar" <fernandes.s.edgar@gmail.com>
