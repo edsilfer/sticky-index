@@ -33,7 +33,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.github.edsilfer:sticky-index:1.2.0'
+    compile 'com.github.edsilfer:sticky-index:1.2.1'
 }
 
 ```
