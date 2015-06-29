@@ -1,6 +1,9 @@
 #Sticky Index Library
 This repository contains the source code for a component that implements the " Sticky Letter Index" such as it is presented in the Android Contact App from Android Lollipop (API 21) on. Please feel free to use it as well as enhance it
 
+Current Stable Version: [ ![Download](https://api.bintray.com/packages/edsilfer/maven/sticky-index/images/download.svg) ](https://bintray.com/edsilfer/maven/sticky-index/_latestVersion)
+---
+
 **Dont't forget to read the P.S.1 at the [how to use](#how-to-use) section**
 
 # Table of Contents
@@ -23,7 +26,22 @@ Check below the library in a Contact app context:
 ![Demo](https://github.com/edsilfer/sticky-index/blob/master/art/vertical-demo.gif)
 
 # <a name="how-to-use"></a>How to use
-First of all, add the following dependencies to your build.gradle:
+You can compile the library from JCenter through:
+
+```
+repositories {
+    repositories {
+        jcenter()
+    }
+}
+
+dependencies {
+    compile 'br.com.edsilfer:stickyindex:1.0.0'
+}
+
+```
+
+Or Maven through:
 
 ```
 repositories {
@@ -33,7 +51,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.github.edsilfer:sticky-index:1.2.1'
+    compile 'com.github.edsilfer:sticky-index:1.0.0'
 }
 
 ```
