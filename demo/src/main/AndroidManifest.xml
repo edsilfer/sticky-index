@@ -1,20 +1,25 @@
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     package="br.com.stickyindexsample">
 
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
-        tools:replace="android:name"
         android:name=".layout.AppContext"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:theme="@style/AppTheme">
 
-        <provider android:name=".data_providers.SuggestionProvider"
-            android:authorities="br.com.stickyindexsample.data_providers.SuggestionProvider" />
+        <!--<provider android:name=".data_providers.SuggestionProvider"
+            android:authorities="br.com.stickyindexsample.data_providers.SuggestionProvider" />-->
+
+        <provider android:name=".data_providers.CustomSuggestionsProvider"
+                  android:authorities="br.com.stickyindexsample.data_providers.CustomSuggestionsProvider" />
+
+        <activity
+            android:name=".ContactDetails"
+            android:theme="@android:style/Theme.Material.Light.NoActionBar" />
 
         <activity
             android:name=".MainActivity"
@@ -22,20 +27,8 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
-
-            <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
-
-            <meta-data
-                android:name="edsilfer.app.default_searchable"
-                android:value="br.com.stickyindexsample.MainActivity" />
         </activity>
-
-        <activity
-            android:name=".ActivityB"
-            android:theme="@android:style/Theme.Material.Light.NoActionBar" />
     </application>
 </manifest>

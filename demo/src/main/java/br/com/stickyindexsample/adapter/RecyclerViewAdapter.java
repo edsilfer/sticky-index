@@ -115,6 +115,20 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         return dataSet.get(pos);
     }
 
+    public Contact getContactByName (String name) {
+        for (Contact c : dataSet) {
+            if (name.equals(c.getName())) {
+                return c;
+            }
+        }
+
+        return null;
+    }
+
+    public List<Contact> getDataSet() {
+        return dataSet;
+    }
+
     // Bubbler Filler ______________________________________________________________________________
     @Override
     public String getTextFromAdapter(int pos) {

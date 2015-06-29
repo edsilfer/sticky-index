@@ -1,6 +1,7 @@
 package br.com.stickyindex.adapter;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,7 +45,7 @@ public class IndexAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             }
 
             if (rowStyle.getTextSize().intValue() != -1) {
-                index.setTextSize(rowStyle.getTextSize());
+                index.setTextSize(TypedValue.COMPLEX_UNIT_PX, rowStyle.getTextSize());
             }
 
             if (rowStyle.getTextStyle() != -1) {
@@ -113,10 +114,10 @@ public class IndexAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         Float rowHeigh;
         Float stickyWidth;
         Integer textColor;
-        Integer textSize;
+        Float textSize;
         Integer textStyle;
 
-        public RowStyle (Float rHeight, Float sWidth, Integer tColor, Integer tSize, Integer tStyle) {
+        public RowStyle (Float rHeight, Float sWidth, Integer tColor, Float tSize, Integer tStyle) {
             rowHeigh = rHeight;
             stickyWidth = sWidth;
             textColor = tColor;
@@ -148,11 +149,11 @@ public class IndexAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             this.textColor = textColor;
         }
 
-        public Integer getTextSize() {
+        public Float getTextSize() {
             return textSize;
         }
 
-        public void setTextSize(Integer textSize) {
+        public void setTextSize(Float textSize) {
             this.textSize = textSize;
         }
 

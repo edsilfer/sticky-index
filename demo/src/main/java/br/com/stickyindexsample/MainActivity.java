@@ -9,21 +9,26 @@ import android.support.v7.app.AppCompatActivity;
 import android.transition.Slide;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.astuetz.PagerSlidingTabStrip;
 
 import br.com.customsearchable.SearchActivity;
+import br.com.customsearchable.contract.CustomSearchableConstants;
+import br.com.customsearchable.model.ResultItem;
 import br.com.stickyindexsample.adapter.ContactsAdapter;
 
 /**
  * Created by Edgar on 29/05/2015.
  */
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = "MainActivity";
 
     private PagerSlidingTabStrip tabs;
     private ViewPager viewPager;
     private ContactsAdapter viewPagerAdapter;
+    private Boolean isPageViewWithOffset = Boolean.FALSE;
 
     // Activity Callbacks __________________________________________________________________________
     @Override
@@ -55,6 +60,22 @@ public class MainActivity extends AppCompatActivity {
 
         // Listener for slide animation on searchable selected
         setOnSearchableListener();
+
+        // Configure custom-searchable UI
+        // CustomSearchableInfo.setTransparencyColor(Color.parseColor("#0288D1"));
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        if (isPageViewWithOffset) {
+            tabs.animate().translationY(0);
+            viewPager.animate().translationY(0);
+            isPageViewWithOffset = Boolean.FALSE;
+        }
+
+        //this.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
     }
 
     // MENU ________________________________________________________________________________________
@@ -73,12 +94,18 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if (id == R.id.action_search) {
-            //onSearchRequested();
             Intent intent = new Intent(this, SearchActivity.class);
             startActivity(intent);
 
             tabs.animate().translationY(-tabs.getHeight());
             viewPager.animate().translationY(-tabs.getHeight());
+            isPageViewWithOffset = Boolean.TRUE;
+
+            //this.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+
+            View contactFragmentRootView = ((ContactsFragment) viewPagerAdapter.getItem(1)).getRootView();
+            contactFragmentRootView.invalidate();
+
             return true;
         }
 
@@ -96,6 +123,15 @@ public class MainActivity extends AppCompatActivity {
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra(SearchManager.QUERY);
             Toast.makeText(this, "typed: " + query, Toast.LENGTH_SHORT).show();
+        }else if (Intent.ACTION_VIEW.equals(intent.getAction())) {
+            Bundle bundle = this.getIntent().getExtras();
+
+            assert (bundle != null);
+
+            if (bundle != null) {
+                ResultItem receivedItem = bundle.getParcelable(CustomSearchableConstants.CLICKED_RESULT_ITEM);
+                ((ContactsFragment) viewPagerAdapter.getItem(1)).updateRecyclerViewFromSearchSelection(receivedItem.getHeader());
+            }
         }
     }
 

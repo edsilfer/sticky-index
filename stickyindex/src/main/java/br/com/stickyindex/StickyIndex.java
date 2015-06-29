@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -93,7 +94,7 @@ public class StickyIndex extends RelativeLayout {
         if (attrs != null) {
             TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.StickyIndex);
 
-            int textSize = typedArray.getDimensionPixelSize(R.styleable.StickyIndex_android_textSize, -1);
+            float textSize = typedArray.getDimension(R.styleable.StickyIndex_android_textSize, -1);
             int textColor = typedArray.getColor(R.styleable.StickyIndex_android_textColor, -1);
 
             textSize = (textSize != -1) ? textSize : 26;
@@ -121,7 +122,7 @@ public class StickyIndex extends RelativeLayout {
         }
 
         if (styles.getTextSize() != -1) {
-            stickyIndex.getStickyIndex().setTextSize(styles.getTextSize());
+            stickyIndex.getStickyIndex().setTextSize(TypedValue.COMPLEX_UNIT_PX, styles.getTextSize());
         }
 
         if (styles.getTextColor() != null) {

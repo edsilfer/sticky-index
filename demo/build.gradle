@@ -23,13 +23,11 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile project(':stickyindex')
-    compile 'br.com.edsilfer:custom-searchable:0.0.1-Beta'
-
+    compile 'br.com.edsilfer:custom-searchable:0.0.6-Beta'
     compile 'com.android.support:recyclerview-v7:21.0.+'
     compile 'com.android.support:cardview-v7:21.0.+'
     compile 'com.android.support:design:22.2.0'
     compile 'com.astuetz:pagerslidingtabstrip:1.0.1'
     compile 'com.pkmmte.view:circularimageview:1.1'
     compile 'com.squareup.picasso:picasso:2.5.2'
-
 }

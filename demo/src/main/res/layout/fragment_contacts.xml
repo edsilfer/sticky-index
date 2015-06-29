@@ -11,15 +11,15 @@
         android:id="@+id/sticky_index_container"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
-
+        android:textSize="20dp"
+        android:textStyle="bold"
         app:rowHeight="64dp"
         app:stickyWidth="60dp"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_toRightOf="@+id/sticky_index_container"/>
+        android:layout_height="match_parent" />
 
     <br.com.stickyindexsample.layout.FastScroller
         android:id="@+id/fast_scroller"

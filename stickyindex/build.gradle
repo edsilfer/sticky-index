@@ -25,7 +25,7 @@ ext {
     bintrayRepo = 'maven'
     bintrayName = 'sticky-index'
 
-    publishedGroupId = 'br.com.stickyindex'
+    publishedGroupId = 'br.com.edsilfer'
     libraryName = 'IndexLayoutManager'
     artifact = 'sticky-index'
 
@@ -34,7 +34,7 @@ ext {
     siteUrl = 'https://github.com/edsilfer/sticky-index'
     gitUrl = 'https://github.com/edsilfer/sticky-index.git'
 
-    libraryVersion = '0.0.1'
+    libraryVersion = '1.0.0'
 
     developerId = 'edsilfer'
     developerName = 'Edgar Fernandes'

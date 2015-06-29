@@ -20,7 +20,7 @@ public class ContactsDAO {
     public static List<Contact> listMappedContacts() {
         Set<Contact> result = new TreeSet<>();
 
-        Cursor cursor = listContacts();
+        Cursor cursor = listAllContacts();
 
         if ((cursor != null) && cursor.moveToFirst()) {
             String previous = "";
@@ -36,15 +36,26 @@ public class ContactsDAO {
         return new ArrayList<>(result);
     }
 
-    private static Boolean isHeader(String n1, String n2) {
-        if (Character.toLowerCase(n1.charAt(0)) != Character.toLowerCase(n2.charAt(0))) {
-            return Boolean.TRUE;
-        } else {
-            return Boolean.FALSE;
+    public static List<Contact> searchContactsByName(String query) {
+        Set<Contact> result = new TreeSet<>();
+
+        Cursor cursor = listContactsByName(query);
+
+        if ((cursor != null) && cursor.moveToFirst()) {
+            String previous = "";
+            Contact actual = null;
+
+            do {
+                result.add(mapContact(cursor));
+            } while (cursor.moveToNext());
         }
+
+        cursor.close();
+
+        return new ArrayList<>(result);
     }
 
-    private static Cursor listContacts() {
+    public static Cursor listContactsByName (String query) {
         ContentResolver contentResolver = AppContext.getAppContext().getContentResolver();
 
         // Sets the columns to retrieve for the user profile
@@ -56,15 +67,42 @@ public class ContactsDAO {
                         ContactsContract.Profile.PHOTO_THUMBNAIL_URI
                 };
 
-        String selection = "";
+        String selection = ContactsContract.Profile.DISPLAY_NAME_PRIMARY.concat(" LIKE ? AND ").concat(
+                ContactsContract.Contacts.IN_VISIBLE_GROUP.concat(" = '").concat("1").concat("'"));
+
+        String[] selectionArgs = {"%".concat(query.concat("%"))};
+        String sortOrder = "LOWER (" + ContactsContract.Profile.DISPLAY_NAME_PRIMARY + ") ASC";
+
+        // Retrieves the profile from the Contacts Provider
+        return contentResolver.query(
+                ContactsContract.Contacts.CONTENT_URI,
+                projection,
+                selection + " AND " + ContactsContract.Contacts.HAS_PHONE_NUMBER,
+                selectionArgs,
+                sortOrder);
+    }
+
+    public static Cursor listAllContacts() {
+        ContentResolver contentResolver = AppContext.getAppContext().getContentResolver();
+
+        // Sets the columns to retrieve for the user profile
+        String[] projection = new String[]
+                {
+                        ContactsContract.Profile._ID,
+                        ContactsContract.Profile.DISPLAY_NAME_PRIMARY,
+                        ContactsContract.Profile.LOOKUP_KEY,
+                        ContactsContract.Profile.PHOTO_THUMBNAIL_URI
+                };
+
+        String selection = ContactsContract.Contacts.IN_VISIBLE_GROUP + " = '" + ("1") + "'";
         String[] selectionArgs = null;
         String sortOrder = "LOWER (" + ContactsContract.Profile.DISPLAY_NAME_PRIMARY + ") ASC";
 
         // Retrieves the profile from the Contacts Provider
         return contentResolver.query(
-                ContactsContract.Data.CONTENT_URI,
+                ContactsContract.Contacts.CONTENT_URI,
                 projection,
-                selection,
+                selection + " AND " + ContactsContract.Contacts.HAS_PHONE_NUMBER,
                 selectionArgs,
                 sortOrder);
     }
