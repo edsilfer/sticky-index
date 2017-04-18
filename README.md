@@ -1,4 +1,4 @@
-#Sticky Index Library
+# Sticky Index Library
 This repository contains the source code for a component that implements the " Sticky Letter Index" such as it is presented in the Android Contact App from Android Lollipop (API 21) on. Please feel free to use it as well as enhance it
 
 Current Stable Version: [ ![Download](https://api.bintray.com/packages/edsilfer/maven/sticky-index/images/download.svg) ](https://bintray.com/edsilfer/maven/sticky-index/_latestVersion)
@@ -14,18 +14,23 @@ Current Stable Version: [ ![Download](https://api.bintray.com/packages/edsilfer/
 * [Team Members](#team-members)
 * [License](#license)
 
+<a name="intro"></a>
 
-# <a name="intro"></a>Introduction
+# Introduction
 You've just got a smartphone with Android API 21+, took a look in the "Contact" app and got excited by those sticky letters that scrolls with the list in a beautiful manner? Well, this library intend to provide you with the same component.
 
-# <a name="showcase"></a>Showcase
+<a name="showcase"></a>
+
+# Showcase
 Check below the library in a Contact app context:
 
 ![Demo](https://github.com/edsilfer/sticky-index/blob/master/art/horizontal-demo.gif)   
 
 ![Demo](https://github.com/edsilfer/sticky-index/blob/master/art/vertical-demo.gif)
 
-# <a name="how-to-use"></a>How to use
+<a name="how-to-use"></a>
+
+# How to use
 You can compile the library from JCenter through:
 
 ```
@@ -89,7 +94,9 @@ By last, initialize it in the container main class. Also add the dataSet (a char
 
 P.S.2.: As said above, **the sticky-index is another RecyclerView that needs to match the reference one** (which you should provide). In order to sync the scroll action of both, a **OnScrollListener** of your given RecyclerView is created inside the library. If you need to receive scroll updates, please, create a class that implements the interface **Subscriber** and register it inside **StickyIndex** class through the method ```subscribeForScrollListener()```. The ```update``` method is equivalent to the ```onScroll()``` method of the **OnScrollView**. If the action that you'll develop inside your update need to affect the scroll of the sticky-index list, the method ```getStickyIndex()``` is provided through the class **StickyIndex**. The returned instance has a call for the method ```update``` (Refer to the demo app code for further details, there the described approach is implemented to make the sticky-index compatible with the fastscroller class)
 
-# <a name="to-do"></a>TODO List
+<a name="to-do"></a>
+
+# TODO List
 * Upload library into JCenter/Maven;
 * ~~Make index list background transparent in order to correct the detail when user pushes down the list in the top or bottom of it;~~
 * ~~Add attributes gather from the XML in order to set the row height, text size, style and color;~~
@@ -99,10 +106,14 @@ P.S.2.: As said above, **the sticky-index is another RecyclerView that needs to 
 * ~~Rename app project to demo;~~
 * ~~Create separeted branch for art;~~
 
-# <a name="team-members"></a>Team Members
+<a name="team-members"></a>
+
+# Team Members
 * "Fernandes S. Edgar" <fernandes.s.edgar@gmail.com>
 
-# <a name="license"></a>License
+<a name="license"></a>
+
+# License
 Copyright 2015 Edgar da Silva Fernandes
 
 Licensed under the Apache License, Version 2.0 (the "License");
