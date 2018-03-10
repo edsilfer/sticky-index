@@ -6,13 +6,13 @@
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
-        android:name=".layout.AppContext"
+        android:name=".common.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:theme="@style/AppTheme">
 
         <!--<provider android:name=".data_providers.SuggestionProvider"
-            android:authorities="br.com.stickyindexsample.data_providers.SuggestionProvider" />-->
+            android:authoritibr.com.stickyindexsample.dao.SuggestionProviderider" />-->
 
         <provider android:name=".data_providers.CustomSuggestionsProvider"
                   android:authorities="br.com.stickyindexsample.data_providers.CustomSuggestionsProvider" />
@@ -22,7 +22,7 @@
             android:theme="@android:style/Theme.Material.Light.NoActionBar" />
 
         <activity
-            android:name=".MainActivity"
+            android:name=".view.MainView"
             android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

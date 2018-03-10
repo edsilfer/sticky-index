@@ -1,13 +1,31 @@
+apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+ext {
+    LIBRARY_VERSION_ANDROID_SUPPORT = '27.0.2'
+    LIBRARY_VERSION_ANDROID_KTX = '0.1'
+    LIBRARY_VERSION_CIRCULAR_IMAGE_VIEW = '3.0.2'
+    LIBRARY_VERSION_CONSTRAINT_LAYOUT = '1.1.0-beta5'
+    LIBRARY_VERSION_DAGGER_2 = '2.11'
+    LIBRARY_VERSION_FACEBOOK_SDK = '[4,5)'
+    LIBRARY_VERSION_GSON = '2.8.1'
+    LIBRARY_VERSION_MAP_STRUCT = '1.1.0.Final'
+    LIBRARY_VERSION_PICASSO = '2.5.2'
+    LIBRARY_VERSION_RXJAVA = '2.1.1'
+    LIBRARY_VERSION_RXJAVA_ANDROID = '2.0.1'
+    LIBRARY_VERSION_TIMBER = '4.6.0'
+    LIBRARY_VERSION_ARCHITECTURE_LIFECYCLE_DEPENDENCIES = '1.1.0'
+}
 
 android {
-    compileSdkVersion 22
-    buildToolsVersion "22.0.1"
+    compileSdkVersion 27
 
     defaultConfig {
-        applicationId "br.com.stikyindexsample"
+        applicationId "br.com.edsilfer.stiky_index.sample"
         minSdkVersion 22
-        targetSdkVersion 22
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
     }
@@ -21,13 +39,32 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile project(':stickyindex')
-    compile 'br.com.edsilfer:custom-searchable:0.0.6-Beta'
-    compile 'com.android.support:recyclerview-v7:21.0.+'
-    compile 'com.android.support:cardview-v7:21.0.+'
-    compile 'com.android.support:design:22.2.0'
-    compile 'com.astuetz:pagerslidingtabstrip:1.0.1'
-    compile 'com.pkmmte.view:circularimageview:1.1'
-    compile 'com.squareup.picasso:picasso:2.5.2'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // SUPPORT
+    implementation 'com.android.support:recyclerview-v7:27.1.0'
+    implementation 'com.android.support:cardview-v7:27.1.0'
+    implementation 'com.android.support:design:27.1.0'
+
+    // RxJAVA
+    implementation "io.reactivex.rxjava2:rxjava:$LIBRARY_VERSION_RXJAVA"
+    implementation "io.reactivex.rxjava2:rxandroid:$LIBRARY_VERSION_RXJAVA_ANDROID"
+
+    // OWN
+    implementation project(':sticky-index')
+    implementation 'br.com.edsilfer:custom-searchable:0.0.6-Beta'
+
+    // OTHER
+    implementation 'com.astuetz:pagerslidingtabstrip:1.0.1'
+    implementation 'com.pkmmte.view:circularimageview:1.1'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
+
+kapt {
+    generateStubs = true
+}
+repositories {
+    mavenCentral()
 }
