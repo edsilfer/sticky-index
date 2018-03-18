@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="com.astuetz:pagerslidingtabstrip-1.0.1">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/pagerslidingtabstrip-1.0.1.aar/63c64a0f07e6e6309aea0eaac8968e10/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/pagerslidingtabstrip-1.0.1.aar/63c64a0f07e6e6309aea0eaac8968e10/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/pagerslidingtabstrip-1.0.1.aar/d5d7f6e25cf340f1b2ba7670631440ed/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/pagerslidingtabstrip-1.0.1.aar/d5d7f6e25cf340f1b2ba7670631440ed/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

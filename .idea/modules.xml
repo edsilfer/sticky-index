@@ -5,7 +5,6 @@
       <module fileurl="file://$PROJECT_DIR$/demo/demo.iml" filepath="$PROJECT_DIR$/demo/demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/sticky-index.iml" filepath="$PROJECT_DIR$/sticky-index.iml" />
       <module fileurl="file://$PROJECT_DIR$/sticky-index/sticky-index-sticky-index.iml" filepath="$PROJECT_DIR$/sticky-index/sticky-index-sticky-index.iml" />
-      <module fileurl="file://$PROJECT_DIR$/stickyindex/stickyindex.iml" filepath="$PROJECT_DIR$/stickyindex/stickyindex.iml" />
     </modules>
   </component>
 </project>

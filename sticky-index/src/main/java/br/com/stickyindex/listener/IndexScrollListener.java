@@ -45,7 +45,7 @@ public class IndexScrollListener extends RecyclerView.OnScrollListener implement
     }
 
     // GETTERs AND SETTERs _________________________________________________________________________
-    public void setOnScrollListener(RecyclerView rv) {
-        rv.setOnScrollListener(this);
+    public void setOnScrollListener(RecyclerView recyclerView) {
+        recyclerView.setOnScrollListener(this);
     }
 }

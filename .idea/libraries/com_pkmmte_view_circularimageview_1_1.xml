@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="com.pkmmte.view:circularimageview-1.1">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/circularimageview-1.1.aar/08f26cc282e03fc21d3a72ffbd9d0ef7/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/circularimageview-1.1.aar/08f26cc282e03fc21d3a72ffbd9d0ef7/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/circularimageview-1.1.aar/13af9d79e6ea2ed001d47f7095b85774/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/circularimageview-1.1.aar/13af9d79e6ea2ed001d47f7095b85774/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
