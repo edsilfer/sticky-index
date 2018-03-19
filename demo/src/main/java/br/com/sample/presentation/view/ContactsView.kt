@@ -79,18 +79,18 @@ class ContactsView : Fragment() {
         fast_scroller.setStickyIndex(sticky_index_container.stickyIndex)
     }
 
+    /**
+     * Maps the RecyclerView content to a {@link CharArray} to be used as sticky-indexes
+     */
     private fun getIndexList(list: List<Contact>): CharArray {
-        val result = CharArray(list.size)
-        for ((index, character) in list.withIndex()) {
-            result[index] = Character.toUpperCase(character.name[0])
-        }
-        return result
+        return list.map { contact -> contact.name.toUpperCase()[0] }
+                .toCollection(ArrayList())
+                .toCharArray()
     }
 
     fun updateRecyclerViewFromSearchSelection(contactName: String) {
-        val adapter = recyclerView.adapter as ContactsAdapter
-        val contact = adapter.getContactByName(contactName)
-        val contactIdx = adapter.dataSet.indexOf(contact)
+        val contact = contactsAdapter.getContactByName(contactName)
+        val contactIdx = contactsAdapter.dataSet.indexOf(contact)
         recyclerView.layoutManager.smoothScrollToPosition(recyclerView, null, contactIdx)
     }
 }
