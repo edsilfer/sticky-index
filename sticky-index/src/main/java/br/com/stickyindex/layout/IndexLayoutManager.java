@@ -46,6 +46,10 @@ public class IndexLayoutManager implements Subscriber {
     }
 
     // SUBSCRIBER INTERFACE ________________________________________________________________________
+
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void update(RecyclerView referenceList, float dx, float dy) {
         if (indexList != null) {

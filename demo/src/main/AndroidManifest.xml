@@ -1,23 +1,23 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="br.com.stickyindexsample">
+    package="br.com.sample">
 
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
-        android:name=".common.App"
+        android:name="br.com.sample.common.App"
         android:allowBackup="true"
         android:fullBackupContent="true"
         android:icon="@mipmap/ic_launcher"
         android:theme="@style/AppTheme">
 
         <provider
-            android:name=".data.SuggestionProvider"
-            android:authorities="br.com.stickyindexsample.data_providers.CustomSuggestionsProvider"
+            android:name="br.com.sample.data.SuggestionProvider"
+            android:authorities="br.com.sample.data_providers.CustomSuggestionsProvider"
             android:exported="false" />
 
         <activity
-            android:name=".view.MainView"
+            android:name="br.com.sample.presentation.view.MainView"
             android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

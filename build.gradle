@@ -1,3 +1,5 @@
+apply from: project.file("dependencies.gradle")
+
 buildscript {
     ext.kotlin_version = '1.2.30'
     ext.version_kotlin = '1.2.30'
@@ -11,7 +13,6 @@ buildscript {
         classpath 'com.android.tools.build:gradle:3.0.1'
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$version_kotlin"
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 
@@ -19,6 +20,7 @@ allprojects {
     repositories {
         jcenter()
         google()
+        maven { url "https://jitpack.io" }
     }
 }
 

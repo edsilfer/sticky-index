@@ -1,27 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <com.astuetz.PagerSlidingTabStrip
-        android:id="@+id/tabs"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/primary"
-        android:textColor="@color/text_primary"
-        android:elevation="4dp"
-
-        app:pstsIndicatorColor="@color/text_primary"
-        app:pstsUnderlineColor="@color/text_primary"
-        app:pstsDividerColor="@color/primary"
-        app:pstsShouldExpand="true"/>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/pager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tabs"/>
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.TabLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:background="@color/primary"
+            app:tabIndicatorColor="@android:color/white"
+            app:tabIndicatorHeight="4dip"
+            app:tabTextColor="@android:color/white" />
+    </android.support.v4.view.ViewPager>
 </RelativeLayout>
