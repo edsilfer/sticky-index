@@ -9,7 +9,7 @@
 
         <variable
             name="presenter"
-            type="br.com.sample.presentation.presenter.ContactsPresenter" />
+            type="br.com.stickindex.sample.presentation.presenter.ContactsPresenter" />
     </data>
 
     <RelativeLayout
@@ -31,7 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-        <br.com.sample.presentation.view.layout.FastScroller
+        <br.com.stickindex.sample.presentation.view.layout.FastScroller
             android:id="@+id/fast_scroller"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"

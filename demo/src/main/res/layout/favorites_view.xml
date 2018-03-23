@@ -8,7 +8,7 @@
 
         <variable
             name="presenter"
-            type="br.com.sample.presentation.presenter.FavoritesPresenter" />
+            type="br.com.stickindex.sample.presentation.presenter.FavoritesPresenter" />
     </data>
 
 
