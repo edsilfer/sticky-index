@@ -8,7 +8,6 @@ import br.com.edsilfer.toolkit.core.components.BasePresenter
 import br.com.edsilfer.toolkit.core.components.SchedulersCoupler
 import br.com.stickindex.sample.data.ContactsDataSource
 import br.com.stickindex.sample.domain.Router
-import br.com.stickindex.sample.domain.model.Contact
 import br.com.stickindex.sample.presentation.view.ContactsView
 import timber.log.Timber.e
 
@@ -24,6 +23,11 @@ class ContactsPresenter(
 ) : BasePresenter(lifecycle) {
     override fun onStart() {
         super.onStart()
+        loadContacts()
+        onContactClicked()
+    }
+
+    private fun loadContacts() {
         addDisposable(datasource.list()
                 .compose(schedulers.convertToAsyncMaybe())
                 .doOnSuccess { view.loadContacts(it) }
@@ -31,11 +35,17 @@ class ContactsPresenter(
                 .subscribe())
     }
 
-    fun onFABClick(view: View) {
-        makeText(view.context, "FAB was clicked!", LENGTH_SHORT).show()
+    private fun onContactClicked() {
+        addDisposable(view.onContactClicked()
+                .doOnNext {
+                    router.launchUserDetails(it)
+                    makeText(view.context, "You clicked in ${it.name}", LENGTH_SHORT).show()
+                }
+                .subscribe()
+        )
     }
 
-    fun onContactClick(contact: Contact) {
-        router.launchUserDetails(contact)
+    fun onFABClick(view: View) {
+        makeText(view.context, "FAB was clicked!", LENGTH_SHORT).show()
     }
 }

@@ -1,6 +1,5 @@
 package br.com.stickindex.sample.presentation.view
 
-import android.app.SearchManager
 import android.content.Context
 import android.content.Intent
 import android.content.Intent.ACTION_SEARCH
@@ -32,7 +31,6 @@ class MainView : AppCompatActivity() {
     lateinit var presenter: MainPresenter
 
     private var viewPagerAdapter: ViewPagerAdapter? = null
-    private var isPageViewWithOffset = false
 
     /**
      * {@inheritDoc}
@@ -46,25 +44,7 @@ class MainView : AppCompatActivity() {
     }
 
     fun render() {
-        addSearchListener()
-        renderViewPager()
-    }
-
-    private fun addSearchListener() {
-        val searchManager = getSystemService(SEARCH_SERVICE) as SearchManager
-        val listener = { showTabs() }
-        searchManager.setOnCancelListener(listener)
-        searchManager.setOnDismissListener(listener)
-    }
-
-    private fun renderViewPager() {
         pager.adapter = viewPagerAdapter
-        pager.currentItem = 1
-    }
-
-    public override fun onResume() {
-        super.onResume()
-        showTabs()
     }
 
     /**
@@ -100,21 +80,7 @@ class MainView : AppCompatActivity() {
     private fun handleActionView(intent: Intent) {
         val receivedItem = intent.extras.getParcelable<ResultItem>(CLICKED_RESULT_ITEM)
         val contactView = viewPagerAdapter!!.getItem(1) as ContactsView
-        contactView.updateRecyclerViewFromSearchSelection(receivedItem.header)
-    }
-
-    private fun showTabs() {
-        if (isPageViewWithOffset) {
-            //tabs.animate().translationY(0f)
-            pager.animate().translationY(0f)
-            isPageViewWithOffset = false
-        }
-    }
-
-    fun hideTabs() {
-        //tabs.animate().translationY((-tabs!!.height).toFloat())
-        //pager.animate().translationY((-tabs!!.height).toFloat())
-        isPageViewWithOffset = true
+        contactView.scrollToContact(receivedItem.header)
     }
 }
 

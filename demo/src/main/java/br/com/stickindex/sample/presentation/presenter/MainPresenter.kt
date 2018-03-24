@@ -4,8 +4,8 @@ import android.Manifest
 import android.app.SearchManager
 import android.arch.lifecycle.Lifecycle
 import android.content.Intent
-import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
+import android.widget.Toast.makeText
 import br.com.edsilfer.toolkit.core.components.BasePresenter
 import br.com.stickindex.sample.domain.Router
 import br.com.stickindex.sample.presentation.view.MainView
@@ -43,16 +43,13 @@ class MainPresenter(
 
     fun onMenuSearchClick(): Boolean {
         router.launchSearchView()
-        view.hideTabs()
         return true
     }
 
-    fun onMenuSettingsClick(): Boolean {
-        return true
-    }
+    fun onMenuSettingsClick(): Boolean = true
 
     fun onSearchResult(intent: Intent) {
         val query = intent.getStringExtra(SearchManager.QUERY)
-        Toast.makeText(view, "User searched for: $query", LENGTH_SHORT).show()
+        makeText(view, "User searched for: $query", LENGTH_SHORT).show()
     }
 }

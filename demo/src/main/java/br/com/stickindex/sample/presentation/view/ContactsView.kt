@@ -13,7 +13,6 @@ import br.com.stickindex.sample.databinding.ContactsViewBinding
 import br.com.stickindex.sample.domain.model.Contact
 import br.com.stickindex.sample.presentation.presenter.ContactsPresenter
 import br.com.stickindex.sample.presentation.view.adapter.ContactsAdapter
-import br.com.stickindex.sample.presentation.view.layout.RecyclerViewOnItemClickListener
 import dagger.android.support.AndroidSupportInjection.inject
 import kotlinx.android.synthetic.main.contacts_view.*
 import javax.inject.Inject
@@ -26,8 +25,8 @@ class ContactsView : Fragment() {
 
     @Inject
     lateinit var presenter: ContactsPresenter
-
-    private lateinit var contactsAdapter: ContactsAdapter
+    @Inject
+    lateinit var adapter: ContactsAdapter
 
     /**
      * {@inheritDoc}
@@ -50,25 +49,27 @@ class ContactsView : Fragment() {
     /**
      * {@inheritDoc}
      */
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        assemblyContactList(emptyList())
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     override fun onAttach(context: Context?) {
         inject(this)
         super.onAttach(context)
     }
 
-    fun loadContacts(contacts: List<Contact>) {
+    private fun assemblyContactList(contacts: List<Contact>) {
         recyclerView.layoutManager = LinearLayoutManager(activity)
-        contactsAdapter = ContactsAdapter(contacts, context!!)
-        recyclerView.adapter = contactsAdapter
-        recyclerView.addOnItemTouchListener(
-                RecyclerViewOnItemClickListener(context!!, { _, position ->
-                    presenter.onContactClick(contactsAdapter.getContact(position))
-                })
-        )
-        addStickIndex(contacts.toMutableList())
+        recyclerView.adapter = adapter
+        addStickIndex(contacts)
     }
 
-    private fun addStickIndex(contacts: MutableList<Contact>) {
-        sticky_index_container.setDataSet(getIndexList(contacts))
+    private fun addStickIndex(contacts: List<Contact>) {
+        sticky_index_container.setDataSet(convertToIndexList(contacts))
         sticky_index_container.setOnScrollListener(recyclerView)
         sticky_index_container.subscribeForScrollListener(fast_scroller)
         addFastScroller()
@@ -82,15 +83,24 @@ class ContactsView : Fragment() {
     /**
      * Maps the RecyclerView content to a {@link CharArray} to be used as sticky-indexes
      */
-    private fun getIndexList(list: List<Contact>): CharArray {
+    private fun convertToIndexList(list: List<Contact>): CharArray {
         return list.map { contact -> contact.name.toUpperCase()[0] }
                 .toCollection(ArrayList())
                 .toCharArray()
     }
 
-    fun updateRecyclerViewFromSearchSelection(contactName: String) {
-        val contact = contactsAdapter.getContactByName(contactName)
-        val contactIdx = contactsAdapter.dataSet.indexOf(contact)
-        recyclerView.layoutManager.smoothScrollToPosition(recyclerView, null, contactIdx)
+    fun loadContacts(contacts: List<Contact>) {
+        adapter.refresh(contacts)
+        sticky_index_container.setDataSet(convertToIndexList(contacts))
     }
+
+    fun scrollToContact(name: String) {
+        recyclerView.layoutManager.smoothScrollToPosition(
+                recyclerView,
+                null,
+                adapter.getIndexByContactName(name)
+        )
+    }
+
+    fun onContactClicked() = adapter.addOnClickListener()
 }

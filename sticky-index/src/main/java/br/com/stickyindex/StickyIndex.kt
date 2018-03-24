@@ -79,7 +79,7 @@ class StickyIndex @JvmOverloads constructor(
         scrollListener?.setOnScrollListener(indexList)
         stickyIndex = IndexLayoutManager(this)
         stickyIndex!!.setIndexList(indexList)
-        scrollListener!!.register(stickyIndex)
+        scrollListener!!.register(stickyIndex!!)
     }
 
     private fun applyStyle(styles: IndexAdapter.RowStyle?) {

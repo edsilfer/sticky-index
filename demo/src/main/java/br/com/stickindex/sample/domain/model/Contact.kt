@@ -1,6 +1,10 @@
 package br.com.stickindex.sample.domain.model
 
+import android.content.Context
+import android.graphics.Bitmap
 import android.net.Uri
+import android.provider.MediaStore
+import io.reactivex.Single
 
 /**
  * Created by Edgar on 29/05/2015.
@@ -25,4 +29,9 @@ data class Contact(
         result = 31 * result + (thumbnail?.hashCode() ?: 0)
         return result
     }
+
+    fun getThumbnailAsBitmap(context: Context): Single<Bitmap> =
+            Single.fromCallable {
+                MediaStore.Images.Media.getBitmap(context.contentResolver, thumbnail)
+            }
 }

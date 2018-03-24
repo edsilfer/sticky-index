@@ -9,18 +9,17 @@ import br.com.stickindex.sample.presentation.view.FavoritesView
 /**
  * Created by Edgar on 30/04/2015.
  */
-class ViewPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
-
+class ViewPagerAdapter(fragmentManager: FragmentManager) : FragmentPagerAdapter(fragmentManager) {
     companion object {
         private val CONTACTS_FRAGMENT = ContactsView()
         private val FAVORITES_FRAGMENT = FavoritesView()
     }
 
     override fun getPageTitle(position: Int): CharSequence? {
-        when (position) {
-            0 -> return "FAVORITES"
-            1 -> return "ALL CONTACTS"
-            else -> return "Unknown"
+        return when (position) {
+            0 -> "ALL CONTACTS"
+            1 -> "FAVORITES"
+            else -> "Unknown"
         }
     }
 
@@ -30,8 +29,8 @@ class ViewPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
     override fun getItem(position: Int): android.support.v4.app.Fragment {
         return when (position) {
-            0 -> FAVORITES_FRAGMENT
-            1 -> CONTACTS_FRAGMENT
+            0 -> CONTACTS_FRAGMENT
+            1 -> FAVORITES_FRAGMENT
             else -> CONTACTS_FRAGMENT
         }
     }
