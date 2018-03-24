@@ -1,4 +1,4 @@
-package br.com.stickyindex.layout
+package br.com.stickyindex
 
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -7,7 +7,6 @@ import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
 import android.widget.RelativeLayout
 import android.widget.TextView
-import br.com.stickyindex.R
 import br.com.stickyindex.model.Subscriber
 import java.lang.Character.toLowerCase
 import java.lang.Math.abs
@@ -29,7 +28,6 @@ class IndexLayoutManager(
         (indexList!!.layoutManager as LinearLayoutManager).scrollToPositionWithOffset(actual, firstVisibleView.top + 0)
     }
 
-    // SUBSCRIBER INTERFACE ________________________________________________________________________
 
     /**
      * {@inheritDoc}

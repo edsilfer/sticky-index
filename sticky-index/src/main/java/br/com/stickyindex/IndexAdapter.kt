@@ -1,4 +1,4 @@
-package br.com.stickyindex.adapter
+package br.com.stickyindex
 
 import android.support.v7.widget.RecyclerView
 import android.util.TypedValue.COMPLEX_UNIT_PX
@@ -9,6 +9,9 @@ import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.TextView
 import br.com.stickyindex.R
+import br.com.stickyindex.model.RowStyle
+import br.com.stickyindex.model.StickyIndexViewHolder
+import java.lang.Character.toLowerCase
 
 /**
  * Created by edgar on 6/4/15.
@@ -21,31 +24,18 @@ class IndexAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.sticky_row_details, parent, false)
         applyStyle(view)
-        return ViewHolder(view)
+        return StickyIndexViewHolder(view)
     }
 
-    private fun IndexAdapter.applyStyle(view: View) {
+    private fun applyStyle(view: View) {
         if (rowStyle == null) {
             return
         }
-
-        if (exists(rowStyle.height)) {
-            setLayoutParams(view, rowStyle)
-        }
-
-        val index = view.findViewById<View>(R.id.sticky_row_index) as TextView
-
-        if (exists(rowStyle.textColor)) {
-            index.setTextColor(rowStyle.textColor)
-        }
-
-        if (exists(rowStyle.textSize.toInt())) {
-            index.setTextSize(COMPLEX_UNIT_PX, rowStyle.textSize)
-        }
-
-        if (exists(rowStyle.textStyle)) {
-            index.setTypeface(null, rowStyle.textStyle)
-        }
+        if (exists(rowStyle.height)) setLayoutParams(view, rowStyle)
+        val index = view.findViewById<TextView>(R.id.sticky_row_index)
+        if (exists(rowStyle.textColor)) index.setTextColor(rowStyle.textColor)
+        if (exists(rowStyle.textSize.toInt())) index.setTextSize(COMPLEX_UNIT_PX, rowStyle.textSize)
+        if (exists(rowStyle.textStyle)) index.setTypeface(null, rowStyle.textStyle)
     }
 
     private fun setLayoutParams(view: View, rowStyle: RowStyle) {
@@ -56,21 +46,19 @@ class IndexAdapter(
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val viewHolder = holder as ViewHolder
+        val viewHolder = holder as StickyIndexViewHolder
         viewHolder.index.text = Character.toString(dataSet[position])
-        if (isHeader(position)!!) {
+        if (isHeader(position)) {
             viewHolder.index.visibility = VISIBLE
         } else {
             viewHolder.index.visibility = INVISIBLE
         }
     }
 
-    private fun isHeader(position: Int): Boolean? =
-            position == 0 || !isSameChar(dataSet[position - 1], dataSet[position])!!
+    private fun isHeader(position: Int): Boolean =
+            position == 0 || !isSameChar(dataSet[position - 1], dataSet[position])
 
-    private fun isSameChar(prev: Char, curr: Char): Boolean? {
-        return Character.toLowerCase(prev) == Character.toLowerCase(curr)
-    }
+    private fun isSameChar(previous: Char, current: Char): Boolean = toLowerCase(previous) == toLowerCase(current)
 
     override fun getItemCount(): Int = dataSet.size
 
@@ -79,18 +67,7 @@ class IndexAdapter(
     }
 
     private fun exists(number: Float): Boolean = number != (-1).toFloat()
+
     private fun exists(number: Int): Boolean = number != -1
 
-    class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
-        internal var index: TextView = v.findViewById<View>(R.id.sticky_row_index) as TextView
-
-    }
-
-    data class RowStyle(
-            val height: Float,
-            val stickyWidth: Float,
-            val textColor: Int,
-            val textSize: Float,
-            val textStyle: Int
-    )
 }

@@ -1,4 +1,4 @@
-package br.com.stickyindex.listener
+package br.com.stickyindex
 
 
 import android.support.v7.widget.RecyclerView

@@ -11,9 +11,7 @@ import android.view.MotionEvent.ACTION_MOVE
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
-import br.com.stickyindex.adapter.IndexAdapter
-import br.com.stickyindex.layout.IndexLayoutManager
-import br.com.stickyindex.listener.IndexScrollListener
+import br.com.stickyindex.model.RowStyle
 import br.com.stickyindex.model.Subscriber
 
 /**
@@ -41,10 +39,10 @@ class StickyIndex @JvmOverloads constructor(
         applyStyle(styles)
     }
 
-    private fun getRowStyle(context: Context, attrs: AttributeSet?): IndexAdapter.RowStyle? {
+    private fun getRowStyle(context: Context, attrs: AttributeSet?): RowStyle? {
         if (attrs != null) {
             val typedArray = context.obtainStyledAttributes(attrs, R.styleable.StickyIndex)
-            val result = IndexAdapter.RowStyle(
+            val result = RowStyle(
                     typedArray.getDimension(R.styleable.StickyIndex_rowHeight, -1f),
                     typedArray.getDimension(R.styleable.StickyIndex_stickyWidth, -1f),
                     typedArray.getColor(R.styleable.StickyIndex_android_textColor, getColor(context, R.color.index_text_color)),
@@ -58,7 +56,7 @@ class StickyIndex @JvmOverloads constructor(
         }
     }
 
-    private fun renderStickyList(context: Context, styles: IndexAdapter.RowStyle?) {
+    private fun renderStickyList(context: Context, styles: RowStyle?) {
         indexList = this.findViewById<View>(R.id.index_list) as RecyclerView
         indexList.layoutManager = LinearLayoutManager(context)
         indexList.setOnTouchListener { _, event -> event.action == ACTION_MOVE }
@@ -66,7 +64,7 @@ class StickyIndex @JvmOverloads constructor(
         indexList.adapter = adapter
     }
 
-    private fun renderStickyWrapper(styles: IndexAdapter.RowStyle?) {
+    private fun renderStickyWrapper(styles: RowStyle?) {
         val stickyWrapper = findViewById<View>(R.id.sticky_index_wrapper) as LinearLayout
         val params = stickyWrapper.layoutParams
         params.width = styles!!.stickyWidth.toInt()
@@ -82,7 +80,7 @@ class StickyIndex @JvmOverloads constructor(
         scrollListener!!.register(stickyIndex!!)
     }
 
-    private fun applyStyle(styles: IndexAdapter.RowStyle?) {
+    private fun applyStyle(styles: RowStyle?) {
         if (styles == null) {
             return
         }
@@ -102,7 +100,7 @@ class StickyIndex @JvmOverloads constructor(
         }
     }
 
-    private fun setLayoutParams(styles: IndexAdapter.RowStyle) {
+    private fun setLayoutParams(styles: RowStyle) {
         val stickyIndexWrapper = this.findViewById<View>(R.id.sticky_index_wrapper) as LinearLayout
         val params = stickyIndexWrapper.layoutParams
         params.height = styles.height.toInt()

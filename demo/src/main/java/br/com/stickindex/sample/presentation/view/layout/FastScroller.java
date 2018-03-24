@@ -14,7 +14,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import br.com.stickyindex.layout.IndexLayoutManager;
+import br.com.stickyindex.IndexLayoutManager;
 import br.com.stickyindex.model.Subscriber;
 import br.com.stickindex.sample.R;
 
