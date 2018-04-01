@@ -1,6 +1,5 @@
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.android.library'
-apply plugin: 'com.jfrog.bintray'
 apply plugin: 'kotlin-android'
 
 android {
@@ -30,7 +29,7 @@ dependencies {
     api deps.external.rxandroid
     api deps.external.rxjava
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation config.build.kotlinStdLib
 }
 
 kapt {
