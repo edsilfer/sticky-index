@@ -1,15 +1,16 @@
+apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 22
-    buildToolsVersion "22.0.1"
+    compileSdkVersion config.build.compileSdkVersion
 
     defaultConfig {
-        applicationId "br.com.stikyindexsample"
-        minSdkVersion 22
-        targetSdkVersion 22
-        versionCode 1
-        versionName "1.0"
+        applicationId "br.com.edsilfer.stickyindex.sample"
+        minSdkVersion config.build.minSdkVersion
+        targetSdkVersion config.build.targetSdkVersion
+        compileSdkVersion config.build.compileSdkVersion
     }
 
     buildTypes {
@@ -18,16 +19,46 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile project(':stickyindex')
-    compile 'br.com.edsilfer:custom-searchable:0.0.6-Beta'
-    compile 'com.android.support:recyclerview-v7:21.0.+'
-    compile 'com.android.support:cardview-v7:21.0.+'
-    compile 'com.android.support:design:22.2.0'
-    compile 'com.astuetz:pagerslidingtabstrip:1.0.1'
-    compile 'com.pkmmte.view:circularimageview:1.1'
-    compile 'com.squareup.picasso:picasso:2.5.2'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    kapt deps.ap.dagger
+    kapt deps.ap.daggerAndroid
+    kapt deps.ap.architecture
+
+    implementation deps.architecture.lifecycleExtensions
+    implementation deps.architecture.lifecycleRuntime
+
+    implementation(deps.edsilfer.toolkit) { transitive = true }
+    implementation deps.edsilfer.search
+    implementation project(':library')
+
+    implementation deps.external.circularimage
+    implementation deps.external.daggerAndroid
+    implementation deps.external.dagger
+    implementation deps.external.karumi
+    implementation deps.external.picasso
+    implementation deps.external.timber
+    implementation deps.external.rxandroid
+    implementation deps.external.rxjava
+
+    implementation deps.support.cardview
+    implementation deps.support.design
+    implementation deps.support.recyclerview
+
+    implementation config.build.kotlinStdLib
+}
+
+kapt {
+    generateStubs = true
+}
+
+repositories {
+    mavenCentral()
 }
