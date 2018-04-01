@@ -1,30 +1,13 @@
-# sticky-index & fast-scroller
+## sticky-index & fast-scroller
 Provides _sticky-index_ and _fast-scroller_ UI components
 
-Current version: [ ![Download](https://api.bintray.com/packages/edsilfer/maven/sticky-index/images/download.svg) ](https://bintray.com/edsilfer/maven/sticky-index/_latestVersion)
----
+### Showcase
 
-## Index
-* [Introduction](#intro)
-* [Showcase](#showcase)
-* [How to use](#how-to-use)
-* [License](#license)
+<p align="center">
+    <img src="art/vertical-demo.gif" align="center" width=300>
+</p>
 
-<a name="intro"></a>
-
-## Introduction
-You've just got a smartphone with Android API 21+, took a look in the "Contact" app and got excited by those sticky letters that scrolls with the list in a beautiful manner? Well, this library intend to provide you with the same component.
-
-<a name="showcase"></a>
-
-## Showcase
-![Demo](https://github.com/edsilfer/sticky-index/blob/master/art/horizontal-demo.gif)
-
-![Demo](https://github.com/edsilfer/sticky-index/blob/master/art/vertical-demo.gif)
-
-<a name="how-to-use"></a>
-
-## How to use
+### How to use
 1. Import the dependencies
 
 ```
@@ -91,9 +74,7 @@ You can customizing the stick-index with the following arguments:
     stickyIndex.refresh(convertToIndexList(contacts))
 ```
 
-<a name="license"></a>
-
-# License
+### License
 Copyright 2018 Edgar da Silva Fernandes
 
 Licensed under the Apache License, Version 2.0 (the "License");
