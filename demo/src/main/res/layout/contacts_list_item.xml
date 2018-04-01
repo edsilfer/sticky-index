@@ -4,7 +4,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="64dp"
-    android:layout_marginLeft="80dp"
+    android:layout_marginStart="80dp"
     android:gravity="center_vertical"
     android:orientation="horizontal">
 

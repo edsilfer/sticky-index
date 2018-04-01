@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/bubble"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|end"
+        android:background="@drawable/scroll_bubble"
+        android:gravity="center"
+        android:textColor="#FFffffff"
+        android:textSize="48sp"
+        android:visibility="visible"
+        tools:text="A" />
+
+    <ImageView
+        android:id="@+id/handle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:src="@drawable/scroll_handler" />
+</merge>

@@ -9,7 +9,7 @@
 
         <variable
             name="presenter"
-            type="br.com.stickindex.sample.presentation.presenter.ContactsPresenter" />
+            type="br.com.stickyindex.sample.presentation.presenter.ContactsPresenter" />
     </data>
 
     <RelativeLayout
@@ -17,8 +17,8 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <br.com.stickyindex.StickyIndex
-            android:id="@+id/sticky_index_container"
+        <br.com.stickyindex.view.StickyIndex
+            android:id="@+id/stickyIndex"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:textSize="20sp"
@@ -31,8 +31,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-        <br.com.stickindex.sample.presentation.view.layout.FastScroller
-            android:id="@+id/fast_scroller"
+        <br.com.stickyindex.view.FastScroller
+            android:id="@+id/fastScroller"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentEnd="true"

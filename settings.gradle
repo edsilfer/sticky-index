@@ -1,1 +1,1 @@
-include ':sticky-index', ':demo'
+include ':library', ':demo'

@@ -31,14 +31,13 @@ dependencies {
     kapt deps.ap.dagger
     kapt deps.ap.daggerAndroid
     kapt deps.ap.architecture
-    kapt deps.ap.databinding
 
     implementation deps.architecture.lifecycleExtensions
     implementation deps.architecture.lifecycleRuntime
 
     implementation(deps.edsilfer.toolkit) { transitive = true }
     implementation deps.edsilfer.search
-    implementation project(':sticky-index')
+    implementation project(':library')
 
     implementation deps.external.circularimage
     implementation deps.external.daggerAndroid
