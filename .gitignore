@@ -1,6 +1,8 @@
 
 # Created by https://www.gitignore.io/api/android,intellij,androidstudio
 
+.settings
+
 ### IN APP ###
 app/src/main/res/values/credentials.xml
 .idea/
