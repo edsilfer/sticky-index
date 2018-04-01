@@ -7,7 +7,7 @@ android {
     compileSdkVersion config.build.compileSdkVersion
 
     defaultConfig {
-        applicationId "br.com.edsilfer.stiky_index.sample"
+        applicationId "br.com.edsilfer.stickyindex.sample"
         minSdkVersion config.build.minSdkVersion
         targetSdkVersion config.build.targetSdkVersion
         compileSdkVersion config.build.compileSdkVersion
