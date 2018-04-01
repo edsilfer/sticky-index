@@ -27,20 +27,7 @@ You've just got a smartphone with Android API 21+, took a look in the "Contact" 
 ## How to use
 1. Import the dependencies
 
-**From JCenter**
 ```
-repositories {
-    repositories {
-        jcenter()
-    }
-}
-
-dependencies {
-    compile 'br.com.edsilfer:stickyindex:1.0.0'
-}
-
-// **or from GitHub**
-
 repositories {
     maven {
         url "https://jitpack.io"
@@ -48,7 +35,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.github.edsilfer:sticky-index:1.2.1'
+    compile 'com.github.edsilfer:sticky-index:1.3.0'
 }
 
 ```
